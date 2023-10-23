@@ -24,7 +24,7 @@ public class FormNumberPlayer extends JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         JSpinner nbr_player = new JSpinner(new SpinnerNumberModel(2,2,10,1) );
         JButton confirm = new JButton("Ok");
-        add(new JLabel("Sélectionner le nombre de joueurs"));
+        add(new JLabel("Sélectionner le nombre de joueurs (de 2 à 10 joueurs)"));
 
         confirm.addActionListener(new AccueilListener(nbr_player,this));
         add(nbr_player);
