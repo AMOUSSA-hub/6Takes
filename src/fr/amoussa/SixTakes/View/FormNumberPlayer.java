@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import fr.amoussa.SixTakes.Controller.*;
+import fr.amoussa.SixTakes.Utils.Icone;
 import fr.amoussa.SixTakes.View.*;
 
 public class FormNumberPlayer extends JDialog {
@@ -16,7 +17,7 @@ public class FormNumberPlayer extends JDialog {
 
     public FormNumberPlayer(){
         
-        
+        System.out.println();
         setLocation(800,350);
         setSize(300,200);
         setLayout(new GridLayout(3,1));

@@ -1,7 +1,7 @@
 # COMMANDES #
 JAVAC = javac
 # note $$ to get a single shell $
-JAVAC_OPTIONS = -d build -cp build -sourcepath src   -encoding UTF-8 -implicit:none
+JAVAC_OPTIONS = -d build  -sourcepath src   -encoding UTF-8 -implicit:none
 JAVA = java
 JAVA_OPTIONS_W = -cp build 
 JAVA_OPTIONS = -cp build 
@@ -64,7 +64,8 @@ ${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/FormNumberPlayer.java
 
 ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
-	${BUILD}/View/Card.class
+	${BUILD}/View/Card.class \
+	${BUILD}/Controller/CardListener.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
 
 ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
@@ -78,6 +79,9 @@ ${BUILD}/Controller/AcceuilListener.class:  ${SRC}/Controller/AccueilListener.ja
 	${BUILD}/View/Gamefen.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/AccueilListener.java
 
+
+${BUILD}/Controller/CardListener.class: ${SRC}/Controller/CardListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardListener.java
 # CLASSES MODEL#
 
 ${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \

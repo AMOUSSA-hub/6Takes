@@ -10,11 +10,12 @@ public class Card extends JComponent {
 
     private int malus;
     private int value;
+    private boolean hover= false;
 
     public Card(int v ){
         this.value = v;
         setSize(getPreferredSize());
-        this.addMouseListener(new CardListener(this));
+        
         
 
     if(v%11 ==0){
@@ -52,6 +53,11 @@ public class Card extends JComponent {
       p.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
 
+    if(this.hover){
+        p.setColor(Color.YELLOW);
+        p.drawRoundRect(2,2,(int)Math.round(this.getWidth())+3,(int)Math.round(this.getHeight())+3,15,15);
+        }
+
     p.setColor(Color.BLACK);
      p.drawRoundRect(5,5,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
     p.drawString(this.value+"",(int)Math.round(this.getWidth()*0.05) , (int)Math.round(this.getWidth()*0.1));
@@ -61,9 +67,14 @@ public class Card extends JComponent {
     }
 
     @Override
-    public Dimension getPreferredSize()
-    {
-        return new Dimension(getWidth(),getHeight());
+    public Dimension getPreferredSize(){
+        System.out.println(getWidth() + " "+getHeight() );
+        return new Dimension(5,5);
+    }
+
+    public void setHover(boolean b){
+        this.hover = b ;
+
     }
 
 }

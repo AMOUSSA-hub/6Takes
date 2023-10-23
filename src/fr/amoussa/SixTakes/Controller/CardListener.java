@@ -29,11 +29,18 @@ public class CardListener implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        ca.setHover(true);
+        ca.repaint();
+        e.getX();
        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        ca.setHover(false);
+        ca.repaint();
+        ca.revalidate();
+
 
     }
 
