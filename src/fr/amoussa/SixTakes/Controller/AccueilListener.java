@@ -34,9 +34,6 @@ public class AccueilListener implements ActionListener {
             
         }
 
-        if( e.getActionCommand() =="Quitter"){
-            System.exit(0);
-        }
 
         if( e.getActionCommand() =="Quitter"){
             System.exit(0);
