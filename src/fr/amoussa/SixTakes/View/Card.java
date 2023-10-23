@@ -59,18 +59,14 @@ public class Card extends JComponent {
         }
 
     p.setColor(Color.BLACK);
-     p.drawRoundRect(5,5,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
+     p.drawRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
      p.drawString(this.value+"",(int)Math.round(this.getWidth()*0.05)+5 , (int)Math.round(this.getWidth()*0.1)+5);
         for(int a = 0 ; a < this.malus; a++){
         p.drawImage(Icone.bull, (int)Math.round(this.getWidth()*0.03+a*15),(int)Math.round(this.getWidth()*0.09),25,25,null);
         }
     }
 
-    @Override
-    public Dimension getPreferredSize(){
-        System.out.println(getWidth() + " "+getHeight() );
-        return new Dimension(5,5);
-    }
+  
 
     public void setHover(boolean b){
         this.hover = b ;

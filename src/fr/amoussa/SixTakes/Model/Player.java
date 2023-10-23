@@ -2,12 +2,15 @@ package fr.amoussa.SixTakes.Model;
 
 import java.util.*;
 
+import fr.amoussa.SixTakes.Controller.CardHandListener;
 import fr.amoussa.SixTakes.View.*;
+
 
 public class Player {
 
     private List<Card> hand;
     private int malus;
+    private Card selectedCard;
       
     public Player(){
         this.malus = 0;
@@ -15,6 +18,7 @@ public class Player {
       }
 
       public void addCardToHand(Card c){
+        c.addMouseListener(new CardHandListener(c,this));
         this.hand.add(c);  
       }
 
@@ -38,6 +42,10 @@ public class Player {
 
     public List<Card> getHand(){
       return this.hand;
+    }
+
+    public void setSelectedCard(Card sc) {
+        this.selectedCard = sc;
     }
       
      

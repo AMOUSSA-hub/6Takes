@@ -3,11 +3,11 @@ package fr.amoussa.SixTakes.Controller;
 import java.awt.event.*;
 import fr.amoussa.SixTakes.View.*;
 
-public class CardListener implements MouseListener{
+public class CardFoldListener implements MouseListener{
 
     private Card ca;
 
-    public CardListener(  Card c){
+    public CardFoldListener(  Card c){
         this.ca = c;
     }
 
@@ -31,7 +31,6 @@ public class CardListener implements MouseListener{
     public void mouseEntered(MouseEvent e) {
         ca.setHover(true);
         ca.repaint();
-        e.getX();
        
     }
 
@@ -39,7 +38,6 @@ public class CardListener implements MouseListener{
     public void mouseExited(MouseEvent e) {
         ca.setHover(false);
         ca.repaint();
-        ca.revalidate();
 
 
     }

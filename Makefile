@@ -65,7 +65,8 @@ ${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java
 
 ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
 	${BUILD}/View/Card.class \
-	${BUILD}/Controller/CardListener.class
+	${BUILD}/Controller/CardHandListener.class \
+	${BUILD}/Controller/CardFoldListener.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
 
 ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
@@ -80,8 +81,12 @@ ${BUILD}/Controller/AcceuilListener.class:  ${SRC}/Controller/AccueilListener.ja
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/AccueilListener.java
 
 
-${BUILD}/Controller/CardListener.class: ${SRC}/Controller/CardListener.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardListener.java
+${BUILD}/Controller/CardHandListener.class: ${SRC}/Controller/CardHandListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardHandListener.java
+
+
+${BUILD}/Controller/CardFoldListener.class: ${SRC}/Controller/CardFoldListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardFoldListener.java
 # CLASSES MODEL#
 
 ${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \

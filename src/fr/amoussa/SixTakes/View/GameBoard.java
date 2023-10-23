@@ -3,7 +3,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import fr.amoussa.SixTakes.Controller.CardListener;
+import fr.amoussa.SixTakes.Controller.CardFoldListener;
 import fr.amoussa.SixTakes.Model.Fold;
 import fr.amoussa.SixTakes.Model.Game;
 import fr.amoussa.SixTakes.Utils.Icone;
@@ -43,7 +43,7 @@ public class GameBoard extends JPanel {
     for (Fold f : modelG.getAllFolds()) {
       Card c = f.getLast();
 
-      c.addMouseListener(new CardListener(c));
+      c.addMouseListener(new CardFoldListener(c));
       this.game_stack_pan.add(c);
     }
     
@@ -91,10 +91,7 @@ public class GameBoard extends JPanel {
 
   add(deck_pan,gbc);
 
-  for(Card c: modelG.getAllPlayers()[0].getHand()){
-    c.addMouseListener(new CardListener(c));
-    deck_pan.add(c);
-  }
+  renderDeckPlayer();
 
     gbc.gridx = 0;      // la plage de cellules commence à la première colonne
     gbc.gridy = 1;      // la plage de cellules commence à la deuxième ligne
@@ -110,6 +107,19 @@ public class GameBoard extends JPanel {
   add(quit,gbc);
 
   
+  }
+
+
+  public void renderDeckPlayer(){
+    for(Card c: modelG.getAllPlayers()[0].getHand()){
+    deck_pan.add(c);
+  }
+
+  
+
+
+  
+
   }
 
    
