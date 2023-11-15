@@ -1,9 +1,6 @@
 package fr.amoussa.SixTakes.Controller;
-
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import fr.amoussa.SixTakes.View.*;
 
 public class AccueilListener implements ActionListener {
@@ -30,20 +27,9 @@ public class AccueilListener implements ActionListener {
         }
 
         if( e.getActionCommand() =="Multijoueur"){
-            this.fen.dispose();
+            JOptionPane.showMessageDialog(fen, "Cette section n'est pas encore disponible", "Info",
+        JOptionPane.INFORMATION_MESSAGE);
             
-        }
-
-
-        if( e.getActionCommand() =="Quitter"){
-            System.exit(0);
-        }
-
-        if( e.getActionCommand() =="Ok"){
-            new GameFen((Integer)nbr_player.getValue());
-            this.jdial.dispose();
-        }
-    
-    }
-    
+        } 
+    }   
 }

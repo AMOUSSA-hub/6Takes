@@ -14,7 +14,8 @@ public class Card extends JComponent {
 
     public Card(int v ){
         this.value = v;
-        setSize(getPreferredSize());
+        setMinimumSize(new Dimension(20,30));
+       setPreferredSize(new Dimension(50,70));
         
         
 
@@ -53,16 +54,20 @@ public class Card extends JComponent {
       p.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
 
-    if(this.hover){
-        p.setColor(Color.YELLOW);
-        p.drawRoundRect(2,2,(int)Math.round(this.getWidth())+3,(int)Math.round(this.getHeight())+3,15,15);
-        }
+    
+
+        p.setColor(Color.white);
+        p.fillRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
 
     p.setColor(Color.BLACK);
-     p.drawRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
-     p.drawString(this.value+"",(int)Math.round(this.getWidth()*0.05)+5 , (int)Math.round(this.getWidth()*0.1)+5);
+     p.drawString(this.value+"",(int)Math.round(this.getWidth()*0.05)+5 , (int)Math.round(this.getHeight()*0.1)+5);
         for(int a = 0 ; a < this.malus; a++){
-        p.drawImage(Icone.bull, (int)Math.round(this.getWidth()*0.03+a*15),(int)Math.round(this.getWidth()*0.09),25,25,null);
+        p.drawImage(Icone.bull, (int)Math.round(this.getWidth()*0.01+a*10)-5,(int)Math.round((this.getHeight()*0.1)+10),20,20,null);
+        }
+
+        if(this.hover){
+        p.setColor(Color.RED);
+        p.drawRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
         }
     }
 
@@ -73,4 +78,37 @@ public class Card extends JComponent {
 
     }
 
+    public static  boolean switchApplied;
+
+    public static Card[] bubbleSort(Card[] cards, int i){
+
+        System.out.println("appel recursif");
+        if (i == 0){
+            switchApplied = false;
+        }
+
+        if(cards[i].getValue() > cards[i+1].getValue()){
+                Card stock = cards[i];
+                cards[i] = cards[i+1];
+                cards[i+1] = stock;
+
+                if(!switchApplied){
+                    switchApplied = true;
+                }
+        }
+
+        if( i< cards.length-2){
+            return bubbleSort(cards, i+1);
+        }else{
+
+            if(switchApplied){
+                return bubbleSort(cards, 0);
+            }
+        }
+
+         if(switchApplied){
+            switchApplied = false;
+        }
+        return cards;
+    }
 }

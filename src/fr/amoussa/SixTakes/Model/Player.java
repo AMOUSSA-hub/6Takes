@@ -22,7 +22,7 @@ public class Player {
         this.hand.add(c);  
       }
 
-      public void removeCardToHand(Card c){
+      public void removeCardFromHand(Card c){
         
         this.hand.remove(c);
       }
@@ -30,14 +30,13 @@ public class Player {
 
 
       public void printHand(){
-        System.out.println("");
  System.out.printf("[ ");
         for(Card c : this.hand){
           
             System.out.printf("%d ,",c.getValue());
 
         }
-         System.out.printf("] ");
+         System.out.println("] ");
       }
 
     public List<Card> getHand(){
@@ -47,6 +46,20 @@ public class Player {
     public void setSelectedCard(Card sc) {
         this.selectedCard = sc;
     }
+
+    public Card getSelectedCard(){
+      //this.selectedCard.removeMouseListener(this.selectedCard.getMouseListeners()[0]);
+      return this.selectedCard;
+    }
+
+    public void SelectRandomCard(){
+      Random r = new Random();
+      
+      setSelectedCard(hand.get(r.nextInt(hand.size()-1)));
+
+    }
+
+    public int getMalus(){return this.malus;}
       
      
 }

@@ -13,21 +13,27 @@ public class CardHandListener implements MouseListener{
 
     private Card ca;
     private Player p;
+    private static Card last_clicked;
 
     public CardHandListener(  Card c, Player p){
         this.ca = c;
         this.p = p; 
+        System.out.println("blabla");
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if(last_clicked != null){
+            last_clicked.setHover(false);
+            last_clicked.repaint();
+        }
         
         this.p.setSelectedCard(ca);
+        ca.setHover(true);
+        ca.repaint();
+        last_clicked = ca;
 
 
-       
-
-        new Timer().schedule(new MyTask(ca) , 5*1000);//5 secondes de temps de latence
     }
 
     @Override
@@ -49,31 +55,12 @@ public class CardHandListener implements MouseListener{
 
     @Override
     public void mouseExited(MouseEvent e) {
-        ca.setHover(false);
-        ca.repaint();
 
+        if(this.p.getSelectedCard() != ca){
+            ca.setHover(false);
+            ca.repaint();
+        }
 
-    }
-
-    public void ezef(){
-        System.out.println("qege");
-    }
-
-
-    
+    } 
 }
 
-class MyTask extends TimerTask{
-
-    public Card c;
-
-    MyTask(Card c){
-        this.c = c;
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Vous avez sélectionné la carte " +this.c.getValue());
-    }
-
-}

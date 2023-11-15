@@ -25,7 +25,7 @@ run : ${BUILD}/App.class
 run_W :${BUILD}/App.class
 	${JAVA} ${JAVA_OPTIONS_W} fr.amoussa.SixTakes.App
 
-jar: ${JAR_FILE}
+jar:${JAR_FILE}
 	${EXEC_JAR} ${JAR_FILE}
 
 # POUR WINDOWS#
@@ -66,7 +66,7 @@ ${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java
 ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
 	${BUILD}/View/Card.class \
 	${BUILD}/Controller/CardHandListener.class \
-	${BUILD}/Controller/CardFoldListener.class
+	${BUILD}/Controller/FoldListener.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
 
 ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
@@ -85,8 +85,8 @@ ${BUILD}/Controller/CardHandListener.class: ${SRC}/Controller/CardHandListener.j
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardHandListener.java
 
 
-${BUILD}/Controller/CardFoldListener.class: ${SRC}/Controller/CardFoldListener.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardFoldListener.java
+${BUILD}/Controller/FoldListener.class: ${SRC}/Controller/FoldListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/FoldListener.java
 # CLASSES MODEL#
 
 ${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \

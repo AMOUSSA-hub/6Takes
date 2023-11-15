@@ -12,11 +12,11 @@ public class Accueil extends JFrame {
 
 
     public Accueil(){
-        setLocation(800,350);
+        
         setSize(300,200);
         setLayout(new GridLayout(3,1));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setResizable(true);
         JButton solo = new JButton("Partie Solo");
         JButton multi = new JButton("Multijoueur");
         JButton quit = new JButton("Quitter");
@@ -26,13 +26,8 @@ public class Accueil extends JFrame {
         add(quit);
         solo.addActionListener(new AccueilListener(this));
         multi.addActionListener(new AccueilListener(this));
-        quit.addActionListener(new AccueilListener(this));
-
+        quit.addActionListener(e -> this.dispose());
+        setLocationRelativeTo(null);
         setVisible(true);
-
-
-
-
-    }
-    
+    } 
 }
