@@ -236,8 +236,9 @@ localPlayerScore.setOpaque(false);
         c.removeMouseListener(c.getMouseListeners()[0]);}
       
     }
-    selectedCardPan.revalidate();
+    this.localPlayerPanPlays.repaint();
     selectedCardPan.repaint();
+    selectedCardPan.revalidate();
 
 
   }

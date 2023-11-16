@@ -15,7 +15,7 @@ public class Card extends JComponent {
     public Card(int v ){
         this.value = v;
         setMinimumSize(new Dimension(20,30));
-       setPreferredSize(new Dimension(50,70));
+        //setPreferredSize(new Dimension(50,70));
         
         
 

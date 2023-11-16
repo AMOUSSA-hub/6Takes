@@ -25,11 +25,13 @@ public class CardHandListener implements MouseListener{
         if(last_clicked != null){
             last_clicked.setHover(false);
             last_clicked.repaint();
+            last_clicked.revalidate();
         }
         
         this.p.setSelectedCard(ca);
         ca.setHover(true);
         ca.repaint();
+        ca.revalidate();
         last_clicked = ca;
 
 
@@ -49,6 +51,7 @@ public class CardHandListener implements MouseListener{
     public void mouseEntered(MouseEvent e) {
         ca.setHover(true);
         ca.repaint();
+        ca.revalidate();
        
     }
 
@@ -58,6 +61,7 @@ public class CardHandListener implements MouseListener{
         if(this.p.getSelectedCard() != ca){
             ca.setHover(false);
             ca.repaint();
+            ca.revalidate();
         }
 
     } 

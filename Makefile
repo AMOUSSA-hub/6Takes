@@ -67,7 +67,8 @@ ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
 	${BUILD}/View/Card.class \
 	${BUILD}/Controller/CardHandListener.class \
 	${BUILD}/Controller/FoldListener.class \
-	${BUILD}/View/Fold.class
+	${BUILD}/View/Fold.class \
+	${BUILD}/View/MyJLabel.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
 
 ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
@@ -77,6 +78,9 @@ ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
 
 ${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Fold.java
+
+${BUILD}/View/MyJLabel.class:  ${SRC}/View/MyJLabel.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/MyJLabel.java
 
 
 # CLASSES CONTROLLER#
