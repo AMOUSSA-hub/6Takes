@@ -5,11 +5,10 @@ import java.util.*;
 import fr.amoussa.SixTakes.Controller.FoldListener;
 import fr.amoussa.SixTakes.View.Card;
 
-public class Fold extends LinkedList<Card> {
+public class FoldModel extends LinkedList<Card> {
 
-    private LinkedList<Card> cards ;
 
-    public Fold(){
+    public FoldModel(){
      
 
     }
@@ -27,10 +26,6 @@ public class Fold extends LinkedList<Card> {
         return sum;
     }
     
-    @Override
-    public boolean add(Card c) {
-        c.addMouseListener(new FoldListener(c,this));
-        return super.add(c);
-    }
+
     
 }

@@ -66,12 +66,17 @@ ${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java
 ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
 	${BUILD}/View/Card.class \
 	${BUILD}/Controller/CardHandListener.class \
-	${BUILD}/Controller/FoldListener.class
+	${BUILD}/Controller/FoldListener.class \
+	${BUILD}/View/Fold.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
 
 ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
 	${BUILD}/Utils/Icone.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Card.java	
+
+
+${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Fold.java
 
 
 # CLASSES CONTROLLER#
@@ -91,17 +96,19 @@ ${BUILD}/Controller/FoldListener.class: ${SRC}/Controller/FoldListener.java
 
 ${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \
 	${BUILD}/Model/Player.class \
-	${BUILD}/Model/Fold.class
+	${BUILD}/Model/FoldModel.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Game.java
 
-${BUILD}/Model/Fold.class:  ${SRC}/Model/Fold.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Fold.java
+${BUILD}/Model/FoldModel.class:  ${SRC}/Model/FoldModel.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/FoldModel.java
 
 
 ${BUILD}/Model/Player.class:  ${SRC}/Model/Player.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Player.java
 
 # CLASSES MODEL#
+
+
 
 ${BUILD}/Utils/Icone.class:  ${SRC}/Utils/Icone.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Utils/Icone.java

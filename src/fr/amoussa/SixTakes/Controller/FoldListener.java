@@ -1,8 +1,6 @@
 package fr.amoussa.SixTakes.Controller;
 
 import java.awt.event.*;
-
-import fr.amoussa.SixTakes.Model.Fold;
 import fr.amoussa.SixTakes.View.*;
 
 public class FoldListener implements MouseListener{
@@ -21,7 +19,7 @@ public class FoldListener implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        System.out.println(this.f.getSumMalus());
+        //System.out.println(this.f.getSumMalus());
     }
 
     @Override

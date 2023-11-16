@@ -9,13 +9,13 @@ import javax.swing.text.PlainDocument;
 import fr.amoussa.SixTakes.Model.Player;
 import fr.amoussa.SixTakes.View.*;
 
-public class CardHandListener implements MouseListener{
+public class DeckListener implements MouseListener{
 
     private Card ca;
     private Player p;
     private static Card last_clicked;
 
-    public CardHandListener(  Card c, Player p){
+    public DeckListener(  Card c, Player p){
         this.ca = c;
         this.p = p; 
     }

@@ -1,13 +1,11 @@
 package fr.amoussa.SixTakes.View;
 import java.awt.*;
 import java.util.List;
-import java.util.Timer;
-import java.util.*;
+
 import javax.swing.*;
 
-import fr.amoussa.SixTakes.Controller.FoldListener;
-import fr.amoussa.SixTakes.Model.Fold;
-import fr.amoussa.SixTakes.Model.Game;
+
+
 import fr.amoussa.SixTakes.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 
@@ -16,16 +14,18 @@ public class GameBoard extends JPanel {
   private JPanel gameStackPan;
   private JPanel playerStackPan;
   private JPanel deckPan;
-  private JLabel chrono;
+  private MyJLabel chrono;
   private JPanel selectedCardPan;
-  private JLabel [] printScorePlayer;
+  private MyJLabel [] printScorePlayer;
   private JPanel localPlayerPanPlays;
+  private Fold[] allFolds;
   
   public GameBoard(int nbr_player){
 
   //initialisation du panneau de jeu principal (qui contient tout)
   GridBagConstraints gbc = new GridBagConstraints();
   setLayout(new GridBagLayout());
+  this.allFolds = new Fold[4];
   
 
 
@@ -52,9 +52,11 @@ public class GameBoard extends JPanel {
  
   
 
-  this.chrono = new JLabel();
-  this.printScorePlayer = new JLabel[nbr_player]; 
-  JLabel localPlayerScore = new JLabel("");
+  this.chrono = new MyJLabel();
+  this.chrono.setFont(new Font("Sérif",Font.BOLD,30));
+
+  this.printScorePlayer = new MyJLabel[nbr_player]; 
+  MyJLabel localPlayerScore = new MyJLabel("");
   this.printScorePlayer[0]= localPlayerScore;
   
 
@@ -92,12 +94,19 @@ localPlayerScore.setOpaque(false);
   
    
 
+  for(int i = 0; i<= allFolds.length - 1; i++){
+
+    Fold f = new Fold();
+    allFolds[i]= f;
+    this.gameStackPan.add(f);
+
+  }
     
     
     
     for(int i = 1; i<= nbr_player-1; i++){
 
-      JLabel score = new JLabel("");
+      MyJLabel score = new MyJLabel("");
       
       this.playerStackPan.add( new JLabel(new ImageIcon(Icone.player)));
       this.playerStackPan.add(score);
@@ -188,15 +197,15 @@ localPlayerScore.setOpaque(false);
  * Affiche les 4 piles du jeu 
  * @param folds
  */
-  public void renderFolds(Fold[] folds){ 
-    for (Fold f : folds){
-      Card c = f.getLast();
+  // public void renderFolds(Fold[] folds){ 
+  //   for (Fold f : folds){
+  //     Card c = f.getLast();
 
-      this.gameStackPan.add(c);
-    }
+  //     this.gameStackPan.add(c);
+  //   }
 
 
-  }
+  // }
 /**
  * Affiche le minuteur
  * @param t
@@ -246,6 +255,10 @@ localPlayerScore.setOpaque(false);
       }else{ printScorePlayer[i].setText("SCORE: "+p[i].getMalus());}
        
     }
+  }
+
+  public Fold[] getAllFolds(){
+    return this.allFolds;
   }
 
 

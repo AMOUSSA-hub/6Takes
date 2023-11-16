@@ -9,7 +9,7 @@ import fr.amoussa.SixTakes.View.GameBoard;
 public class Game extends Timer {
 
     private Player[] allPlayers;
-    private Fold[] allFolds;
+    private FoldModel[] allFolds;
     private GameBoard gm;
     
     
@@ -17,10 +17,10 @@ public class Game extends Timer {
     public Game( int nbr_player,GameBoard view){
         this.gm = view;
         this.allPlayers = new Player[nbr_player];
-        this.allFolds = new Fold[4];
+        this.allFolds = new FoldModel[4];
 
         for(int i = 0; i< this.allFolds.length; i++){
-          this.allFolds[i]= new Fold();
+          this.allFolds[i]= new FoldModel();
         }
 
         for(int a = 0; a < nbr_player; a++){
@@ -31,7 +31,6 @@ public class Game extends Timer {
 
         view.renderDeckLocalPlayer(allPlayers[0].getHand());
         view.renderScores(allPlayers);
-        view.renderFolds(allFolds);
 
         startRound();
 
@@ -47,8 +46,10 @@ public class Game extends Timer {
      }
 
      Random r = new Random();
-     for(Fold f : this.allFolds){
-       f.add(deck.remove(r.nextInt(deck.size())));
+     for(int i = 0 ; i <= allFolds.length-1;  i++){
+      Card c =deck.remove(r.nextInt(deck.size()));
+       allFolds[i].add(c);
+       this.gm.getAllFolds()[i].add(c);
      }
 
        for(Player p : allPlayers){
@@ -66,7 +67,7 @@ public class Game extends Timer {
         return this.allPlayers;
     }
 
-    public Fold[] getAllFolds(){
+    public FoldModel[] getAllFolds(){
       return this.allFolds;
     }
 
@@ -107,7 +108,8 @@ public class Game extends Timer {
 
           Card c = Collections.min(plays, Comparator.comparingInt(Card::getValue));
           System.out.println(c.getValue());
-          //allFolds[0].add(c);
+          allFolds[0].add(c);
+          this.gm.getAllFolds()[0].add(c);
           plays.remove(c);
           this.gm.renderPlays(plays);
     
