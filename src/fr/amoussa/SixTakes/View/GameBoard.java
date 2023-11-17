@@ -221,20 +221,20 @@ localPlayerScore.setOpaque(false);
   public void renderPlays(List<Card> plays){
 
     selectedCardPan.removeAll();
-    List<Card> cards= plays;
 
 
-    for (Card c :  cards){
+    for (Card c :  plays){
       
 
-      if(cards.get(0) == c && c.getMouseListeners().length != 0 ){
+      if(plays.get(0) == c && c.getMouseListeners().length != 0 ){
         this.localPlayerPanPlays.add(c);
       }else{
         selectedCardPan.add(c);
       }
         if(c.getMouseListeners().length != 0){
-        c.removeMouseListener(c.getMouseListeners()[0]);}
-      
+        c.removeMouseListener(c.getMouseListeners()[0]);
+      }
+
     }
     this.localPlayerPanPlays.repaint();
     selectedCardPan.repaint();

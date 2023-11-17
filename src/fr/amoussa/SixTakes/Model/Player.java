@@ -2,7 +2,7 @@ package fr.amoussa.SixTakes.Model;
 
 import java.util.*;
 
-import fr.amoussa.SixTakes.Controller.CardHandListener;
+import fr.amoussa.SixTakes.Controller.DeckListener;
 import fr.amoussa.SixTakes.View.*;
 
 
@@ -18,7 +18,7 @@ public class Player {
       }
 
       public void addCardToHand(Card c){
-        c.addMouseListener(new CardHandListener(c,this));
+        c.addMouseListener(new DeckListener(c,this));
         this.hand.add(c);  
       }
 

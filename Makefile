@@ -65,8 +65,7 @@ ${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java
 
 ${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
 	${BUILD}/View/Card.class \
-	${BUILD}/Controller/CardHandListener.class \
-	${BUILD}/Controller/FoldListener.class \
+	${BUILD}/Controller/DeckListener.class \
 	${BUILD}/View/Fold.class \
 	${BUILD}/View/MyJLabel.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
@@ -76,7 +75,8 @@ ${BUILD}/View/Card.class: ${SRC}/View/Card.java \
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Card.java	
 
 
-${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java
+${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java \
+	${BUILD}/Controller/FoldListener.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Fold.java
 
 ${BUILD}/View/MyJLabel.class:  ${SRC}/View/MyJLabel.java
@@ -90,8 +90,8 @@ ${BUILD}/Controller/AcceuilListener.class:  ${SRC}/Controller/AccueilListener.ja
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/AccueilListener.java
 
 
-${BUILD}/Controller/CardHandListener.class: ${SRC}/Controller/CardHandListener.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/CardHandListener.java
+${BUILD}/Controller/DeckListener.class: ${SRC}/Controller/DeckListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/DeckListener.java
 
 
 ${BUILD}/Controller/FoldListener.class: ${SRC}/Controller/FoldListener.java

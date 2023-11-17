@@ -20,7 +20,7 @@ public Component add(Component comp) {
     Card c = (Card)comp;
     c.addMouseListener(new FoldListener(c,this));
     setLayout(new GridLayout(this.getComponentCount()+1,1, 0,5));
-    System.out.println(getComponentCount()+" cartes dans cette pile");
+   //System.out.println(getComponentCount()+" cartes dans cette pile");
     return super.add(c);
 }
 

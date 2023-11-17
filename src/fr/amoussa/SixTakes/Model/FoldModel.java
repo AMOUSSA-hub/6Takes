@@ -2,7 +2,6 @@ package fr.amoussa.SixTakes.Model;
 
 import java.util.*;
 
-import fr.amoussa.SixTakes.Controller.FoldListener;
 import fr.amoussa.SixTakes.View.Card;
 
 public class FoldModel extends LinkedList<Card> {

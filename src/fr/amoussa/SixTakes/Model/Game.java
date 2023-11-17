@@ -2,14 +2,13 @@ package fr.amoussa.SixTakes.Model;
 
 import java.util.*;
 
-
 import fr.amoussa.SixTakes.View.Card;
 import fr.amoussa.SixTakes.View.GameBoard;
 
 public class Game extends Timer {
 
     private Player[] allPlayers;
-    private FoldModel[] allFolds;
+    private ArrayList<FoldModel> allFolds;
     private GameBoard gm;
     
     
@@ -17,10 +16,10 @@ public class Game extends Timer {
     public Game( int nbr_player,GameBoard view){
         this.gm = view;
         this.allPlayers = new Player[nbr_player];
-        this.allFolds = new FoldModel[4];
+        this.allFolds = new  ArrayList<>();
 
-        for(int i = 0; i< this.allFolds.length; i++){
-          this.allFolds[i]= new FoldModel();
+        for(int i = 0; i< 4; i++){
+          this.allFolds.add(new FoldModel());
         }
 
         for(int a = 0; a < nbr_player; a++){
@@ -46,9 +45,9 @@ public class Game extends Timer {
      }
 
      Random r = new Random();
-     for(int i = 0 ; i <= allFolds.length-1;  i++){
+     for(int i = 0 ; i <= allFolds.size()-1;  i++){
       Card c =deck.remove(r.nextInt(deck.size()));
-       allFolds[i].add(c);
+       allFolds.get(i).add(c);
        this.gm.getAllFolds()[i].add(c);
      }
 
@@ -67,7 +66,7 @@ public class Game extends Timer {
         return this.allPlayers;
     }
 
-    public FoldModel[] getAllFolds(){
+    public List<FoldModel> getAllFolds(){
       return this.allFolds;
     }
 
@@ -78,6 +77,7 @@ public class Game extends Timer {
           if(allPlayers[i].getSelectedCard() == null){
               allPlayers[i].SelectRandomCard();
           }
+          
               System.out.println("Le joueur "+(i+1)+" a joué la carte "+allPlayers[i].getSelectedCard().getValue());
               allPlays.add(allPlayers[i].getSelectedCard()) ;
         
@@ -90,35 +90,64 @@ public class Game extends Timer {
     }
 
 
-    public void startRound(){
-
-      schedule(new Round(5,this), 1000,1000);
-      
-    }
+    public void startRound(){schedule(new Round(5,this), 1000,1000);}
 
     public GameBoard getView(){return this.gm;}
 
-    public void makePlays(List<Card> plays) {
+    public void makePlays(List<Card> plays){
 
-      List<Card> ogCardOrder = plays;
 
-      while (plays.size()!= 0) {
+      while ( plays.size() != 0) {
        
           try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
 
           Card c = Collections.min(plays, Comparator.comparingInt(Card::getValue));
           System.out.println(c.getValue());
-          allFolds[0].add(c);
-          this.gm.getAllFolds()[0].add(c);
+         this.dispactchCardInFolds(c);
           plays.remove(c);
           this.gm.renderPlays(plays);
+          System.out.println(plays.size());
+
     
       }
 
+  
+
 
     }
+    
+    public boolean dispactchCardInFolds( Card c ){
 
-  
+      List <FoldModel> copyallFolds  =  new ArrayList<>(this.allFolds);
+      int nbrFoldTested = 0;
+      boolean cardPlaced = false;
+      while (nbrFoldTested != 4 && !cardPlaced ) {
+        FoldModel f = Collections.max(copyallFolds, Comparator.comparingInt(element -> element.getLast().getValue()));
+        System.out.println(c.getValue()+" > "+f.getLast().getValue());
+
+          if(c.getValue()> f.getLast().getValue()){
+            
+            System.out.println("la carte "+c.getValue()+" va aller dans la "+allFolds.indexOf(f)+"eme pile");
+            allFolds.get(allFolds.indexOf(f)).add(c);
+
+            this.gm.getAllFolds()[allFolds.indexOf(f)].add(c);
+            cardPlaced = true;
+            
+          }
+          nbrFoldTested++;
+          copyallFolds.remove(f);
+      }
+
+      if(!cardPlaced){
+
+       System.out.println("le joueur ayant joué "+c.getValue()+" doit faire un choix"); 
+
+       }
+
+      
+      return true;
+    }
+
    
 }
 
