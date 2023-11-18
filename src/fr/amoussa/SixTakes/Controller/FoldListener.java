@@ -1,25 +1,41 @@
 package fr.amoussa.SixTakes.Controller;
 
 import java.awt.event.*;
+import java.util.*;
+
 import fr.amoussa.SixTakes.View.*;
 
 public class FoldListener implements MouseListener{
-
-    private Card ca;
+   
     private static boolean selectable = false;
     private Fold f;
     private static Fold foldSelected;
+    private static List <Fold> folds = new ArrayList<>();
 
-    public FoldListener(  Card c, Fold f){
-        this.ca = c;
+    public FoldListener( Fold f){
         this.f = f;
+
+       folds.add(f);
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        if(selectable){
         
-        //System.out.println(this.f.getSumMalus());
+            if(foldSelected != null){
+            foldSelected.setHover(false);
+            foldSelected.repaint();
+            foldSelected.revalidate();
+            }
+            foldSelected= this.f;
+            foldSelected.setHover(true);
+            foldSelected.repaint();
+            foldSelected.revalidate();
+        }
+        
+        
     }
 
     @Override
@@ -35,8 +51,9 @@ public class FoldListener implements MouseListener{
     @Override
     public void mouseEntered(MouseEvent e) {
         if(selectable){
-            ca.setHover(true);
-            ca.repaint();
+            f.setHover(true);
+            f.repaint();
+            f.revalidate();
         }
        
     }
@@ -44,8 +61,11 @@ public class FoldListener implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
          if(selectable){
-            ca.setHover(false);
-            ca.repaint();
+            if(this.f != foldSelected){
+                f.setHover(false);
+                f.repaint();
+                f.revalidate();
+            }
          }
 
 
@@ -53,5 +73,20 @@ public class FoldListener implements MouseListener{
 
     public static void setSelectable(boolean s){
         selectable = s;
-    }   
+        if(!s){
+            
+            for(Fold fold : folds){
+            fold.setHover(false);
+            fold.repaint();
+            fold.revalidate();
+        
+            }
+        }
+    }
+
+    public static Fold getFoldSelected() {
+        return foldSelected;
+    }
+    
+    
 }

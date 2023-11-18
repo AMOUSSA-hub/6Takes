@@ -3,6 +3,7 @@ package fr.amoussa.SixTakes.View;
 import javax.swing.*;
 import java.awt.*;
 import fr.amoussa.SixTakes.Controller.*;
+import fr.amoussa.SixTakes.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 
 
@@ -11,6 +12,7 @@ public class Card extends JComponent {
     private int malus;
     private int value;
     private boolean hover= false;
+    private Player owner;
 
     public Card(int v ){
         this.value = v;
@@ -34,6 +36,7 @@ public class Card extends JComponent {
         
     }
 
+   
 
     public int getMalus() {
         return malus;
@@ -41,6 +44,12 @@ public class Card extends JComponent {
 
     public int getValue() {
         return value;
+    }
+
+    public void setOwner(Player p ){this.owner = p;}
+    
+    public Player getOwner(){
+        return this.owner;
     }
 
     @Override

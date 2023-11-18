@@ -1,5 +1,6 @@
 package fr.amoussa.SixTakes.View;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
@@ -18,14 +19,14 @@ public class GameBoard extends JPanel {
   private JPanel selectedCardPan;
   private MyJLabel [] printScorePlayer;
   private JPanel localPlayerPanPlays;
-  private Fold[] allFolds;
+  private  List<Fold> allFolds;
   
   public GameBoard(int nbr_player){
 
   //initialisation du panneau de jeu principal (qui contient tout)
   GridBagConstraints gbc = new GridBagConstraints();
   setLayout(new GridBagLayout());
-  this.allFolds = new Fold[4];
+  this.allFolds = new ArrayList<>();
   
 
 
@@ -94,10 +95,10 @@ localPlayerScore.setOpaque(false);
   
    
 
-  for(int i = 0; i<= allFolds.length - 1; i++){
+  for(int i = 0; i<= 3; i++){
 
     Fold f = new Fold();
-    allFolds[i]= f;
+    allFolds.add(f) ;
     this.gameStackPan.add(f);
 
   }
@@ -210,8 +211,8 @@ localPlayerScore.setOpaque(false);
  * Affiche le minuteur
  * @param t
  */
-  public void renderChrono(int t){
-    this.chrono.setText("Il vous reste " +t+" secondes pour jouer");
+  public void renderChrono(String s){
+    this.chrono.setText(s);
   
   } 
 /**
@@ -246,19 +247,19 @@ localPlayerScore.setOpaque(false);
  * Affiche les scores
  * @param p
  */
-  public void renderScores(Player[] p){
+  public void renderScores(List<Player> p){
 
-    for(int i = 0; i<= p.length-1;i++){
+    for(int i = 0; i<= p.size()-1;i++){
 
       if (i==0){
-        printScorePlayer[i].setText("MON SCORE: "+p[i].getMalus());
+        printScorePlayer[i].setText("MON SCORE: "+p.get(i).getMalus());
 
-      }else{ printScorePlayer[i].setText("SCORE: "+p[i].getMalus());}
+      }else{ printScorePlayer[i].setText("SCORE: "+p.get(i).getMalus());}
        
     }
   }
 
-  public Fold[] getAllFolds(){
+  public List<Fold> getAllFolds(){
     return this.allFolds;
   }
 

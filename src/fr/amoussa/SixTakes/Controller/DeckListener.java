@@ -29,10 +29,11 @@ public class DeckListener implements MouseListener{
         }
         
         this.p.setSelectedCard(ca);
+        last_clicked = ca;
         ca.setHover(true);
         ca.repaint();
         ca.revalidate();
-        last_clicked = ca;
+        
 
 
     }
