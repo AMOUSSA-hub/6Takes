@@ -16,8 +16,8 @@ public class Game extends Timer {
     private List <Player> allPlayers;
     private ArrayList<FoldModel> allFolds;
     private GameBoard gm;
-    private int roundRemaining;
     private boolean foldSelectionState;
+    private int roundRemaining;
     
     
 
@@ -26,6 +26,7 @@ public class Game extends Timer {
         this.foldSelectionState = false;
         this.allFolds = new  ArrayList<>();
         this.allPlayers = new ArrayList<>();
+        this.roundRemaining = 10;
 
         for(int i = 0; i< 4; i++){
           this.allFolds.add(new FoldModel());
@@ -41,8 +42,8 @@ public class Game extends Timer {
         view.renderScores(allPlayers);
 
 
-
         startRound();
+        
 
 
     }
@@ -87,18 +88,23 @@ public class Game extends Timer {
     public void  getAllPlays() {
       List<Card> allPlays = new ArrayList<>();
       for(Player p : this.allPlayers){
-          if(p.getSelectedCard() == null){
+      Card  c  = p.getSelectedCard();
+
+          if(c == null){
               p.SelectRandomCard();
+            c = p.getSelectedCard();
           }
           
-              System.out.println("Le joueur "+(allPlayers.indexOf(p)+1)+" a joué la carte "+p.getSelectedCard().getValue());
-              allPlays.add(p.getSelectedCard()) ;
+              System.out.println("Le joueur "+(allPlayers.indexOf(p)+1)+" a joué la carte "+c.getValue());
+              allPlays.add(c) ;
+              p.resetCardSelection();
         
       }
 
       gm.renderPlays(allPlays);
       try {Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
       this.makePlays(allPlays);
+      this.gm.renderScores(allPlayers);
 
     }
 
@@ -121,6 +127,15 @@ public class Game extends Timer {
           this.gm.renderPlays(plays);
 
     
+      }
+
+      this.roundRemaining--;
+
+      if(roundRemaining!=7){
+        startRound();
+
+      }else{
+        System.out.println("la partie est finie");
       }
 
   
@@ -159,14 +174,36 @@ public class Game extends Timer {
           try {Thread.sleep(5500);} catch (InterruptedException e) {e.printStackTrace();}
           scheduler.shutdown();
 
-          System.out.println("Vous avez sélectionné la"+(this.gm.getAllFolds().indexOf(FoldListener.getFoldSelected())+1)+"eme plie");
+          int rankFoldSelected;
+          if(FoldListener.getFoldSelected() != null){
 
+            rankFoldSelected = this.gm.getAllFolds().indexOf(FoldListener.getFoldSelected()); 
+          }else{ rankFoldSelected = new Random().nextInt(3);} 
+
+          System.out.println("Vous avez sélectionné le "+(rankFoldSelected+1)+"eme plie et vous récolter donc un malus de "+allFolds.get(rankFoldSelected).getSumMalus()+" points");
+
+          allPlayers.get(0).addMalus(allFolds.get(rankFoldSelected).clearStack());
+          this.gm.getAllFolds().get(rankFoldSelected).clearStack();
+          
+          allFolds.get(rankFoldSelected).add(c);
+          this.gm.getAllFolds().get(rankFoldSelected).add(c);
 
 
         }
         else{
 
-          System.out.println("Le joueur "+(allPlayers.indexOf(c.getOwner())+1)+" a pris la pile X");
+
+                  FoldModel f = Collections.min(allFolds, Comparator.comparingInt(element -> element.getSumMalus()));
+      
+                  int rankFoldSelected = allFolds.indexOf(f); 
+
+                          System.out.println("Le joueur "+(allPlayers.indexOf(c.getOwner())+1)+" a pris la pile "+(rankFoldSelected+1));
+
+
+                  c.getOwner().addMalus(f.clearStack());
+          this.gm.getAllFolds().get(rankFoldSelected).clearStack();
+          allFolds.get(rankFoldSelected).add(c);
+          this.gm.getAllFolds().get(rankFoldSelected).add(c);
 
         
         }
@@ -201,6 +238,7 @@ class Round extends TimerTask{
     Round(int t,Game g){
         this.time = t;
         this.g = g;
+        System.out.println("Commencement nouveau round");
         
     }
       
@@ -209,6 +247,7 @@ class Round extends TimerTask{
     
     this.g.getView().renderChrono("Il vous reste " +this.time+" secondes pour jouer");
       if(this.time == 0){
+         this.g.getView().renderChrono("");
         this.g.getAllPlays();
           cancel();
         }
@@ -237,6 +276,7 @@ class FoldSelection extends TimerTask{
     public void run() {
     this.g.getView().renderChrono("<html>Choisissez une pile <br>"+this.time+"</html>");
       if(this.time == 0){
+        this.g.getView().renderChrono("");
        FoldListener.setSelectable(false);
           cancel();
         }

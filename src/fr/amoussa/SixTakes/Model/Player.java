@@ -11,6 +11,7 @@ public class Player {
     private List<Card> hand;
     private int malus;
     private Card selectedCard;
+    
       
     public Player(){
         this.malus = 0;
@@ -47,9 +48,10 @@ public class Player {
         this.selectedCard = sc;
     }
 
-    public Card getSelectedCard(){
-      //this.selectedCard.removeMouseListener(this.selectedCard.getMouseListeners()[0]);
-      return this.selectedCard;
+    public Card getSelectedCard(){  
+      Card c =  this.selectedCard;
+      //this.selectedCard = null;
+      return c;
     }
 
     public void SelectRandomCard(){
@@ -60,6 +62,14 @@ public class Player {
     }
 
     public int getMalus(){return this.malus;}
+
+    public void addMalus(int m){ this.malus += m; }
+
+    public void resetCardSelection(){
+      this.selectedCard = null;
+    }
+
+   
       
      
 }

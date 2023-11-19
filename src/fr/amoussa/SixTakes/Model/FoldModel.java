@@ -12,9 +12,11 @@ public class FoldModel extends LinkedList<Card> {
 
     }
 
-    // public int clearStack(){
-    //         return 0;
-    // }
+     public int clearStack(){
+            int malus = getSumMalus();
+            this.clear();
+             return malus;
+     }
 
 
     public int getSumMalus(){         
@@ -23,6 +25,16 @@ public class FoldModel extends LinkedList<Card> {
             sum += c.getMalus();
         }
         return sum;
+    }
+
+
+    @Override
+    public boolean add(Card e) {
+        // TODO Auto-generated method stub
+    
+        
+        
+     return super.add(e);   
     }
     
 

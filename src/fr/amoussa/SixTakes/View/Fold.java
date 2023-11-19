@@ -13,14 +13,22 @@ import fr.amoussa.SixTakes.Controller.FoldListener;
 public class Fold extends JPanel {
 
     private boolean hover= false;
+    private GridLayout gl;
 
     Fold(){
         this.setOpaque(false);
         this.addMouseListener(new FoldListener(this));
+        this.gl = new GridLayout(1,1,0,5);
+        this.setLayout(gl);
     }
 
     public void setHover(boolean hover) {
         this.hover = hover;
+    }
+
+    public void clearStack(){
+        this.removeAll();
+        this.gl.setRows(1);
     }
 
 
@@ -28,7 +36,7 @@ public class Fold extends JPanel {
 public Component add(Component comp) {
 
     Card c = (Card)comp;
-    setLayout(new GridLayout(this.getComponentCount()+1,1, 0,5));
+    this.gl.setRows(this.getComponentCount()+1);
     return super.add(c);
 }
 

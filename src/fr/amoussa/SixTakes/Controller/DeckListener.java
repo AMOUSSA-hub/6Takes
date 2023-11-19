@@ -21,13 +21,16 @@ public class DeckListener implements MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        if(last_clicked != null){
+    public void mouseClicked(MouseEvent e) {}
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+         if(last_clicked != null){
             last_clicked.setHover(false);
             last_clicked.repaint();
             last_clicked.revalidate();
         }
-        
+        System.out.println(ca.getValue());
         this.p.setSelectedCard(ca);
         last_clicked = ca;
         ca.setHover(true);
@@ -35,11 +38,6 @@ public class DeckListener implements MouseListener{
         ca.revalidate();
         
 
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
        
     }
 
