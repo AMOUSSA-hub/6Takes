@@ -6,6 +6,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.sound.midi.Soundbank;
+import javax.swing.JOptionPane;
 
 import fr.amoussa.SixTakes.Controller.FoldListener;
 import fr.amoussa.SixTakes.View.Card;
@@ -16,14 +17,12 @@ public class Game extends Timer {
     private List <Player> allPlayers;
     private ArrayList<FoldModel> allFolds;
     private GameBoard gm;
-    private boolean foldSelectionState;
     private int roundRemaining;
     
     
 
     public Game( int nbr_player,GameBoard view){
         this.gm = view;
-        this.foldSelectionState = false;
         this.allFolds = new  ArrayList<>();
         this.allPlayers = new ArrayList<>();
         this.roundRemaining = 10;
@@ -131,11 +130,14 @@ public class Game extends Timer {
 
       this.roundRemaining--;
 
-      if(roundRemaining!=7){
+      if(roundRemaining!=0){
         startRound();
 
       }else{
         System.out.println("la partie est finie");
+        JOptionPane.showMessageDialog(this.gm, "La partie est finie", "Fin",
+        JOptionPane.INFORMATION_MESSAGE);
+
       }
 
   
@@ -155,8 +157,14 @@ public class Game extends Timer {
           if(c.getValue()> f.getLast().getValue()){
             
             System.out.println( "la carte "+c.getValue()+" qui a été jouée par le joueur "+(getAllPlayers().indexOf(c.getOwner())+1)+" va aller dans la "+(allFolds.indexOf(f)+1)+"eme pile");
-            allFolds.get(allFolds.indexOf(f)).add(c);
 
+            if(f.size()==5){
+              c.getOwner().addMalus(allFolds.get(getAllFolds().indexOf(f)).clearStack());
+              this.gm.getAllFolds().get(getAllFolds().indexOf(f)).clearStack();
+
+            }
+
+            allFolds.get(allFolds.indexOf(f)).add(c);
             this.gm.getAllFolds().get(allFolds.indexOf(f)).add(c);
             cardPlaced = true;
             
@@ -182,7 +190,7 @@ public class Game extends Timer {
 
           System.out.println("Vous avez sélectionné le "+(rankFoldSelected+1)+"eme plie et vous récolter donc un malus de "+allFolds.get(rankFoldSelected).getSumMalus()+" points");
 
-          allPlayers.get(0).addMalus(allFolds.get(rankFoldSelected).clearStack());
+          c.getOwner().addMalus(allFolds.get(rankFoldSelected).clearStack());
           this.gm.getAllFolds().get(rankFoldSelected).clearStack();
           
           allFolds.get(rankFoldSelected).add(c);
@@ -215,16 +223,7 @@ public class Game extends Timer {
       return true;
     }
 
-    public void waitFoldSelection(){
-      this.foldSelectionState = false;
 
-      while (!foldSelectionState) {
-        Thread.yield();
-      }
-
-    }
-
-    public void setSelectionFold(boolean s){this.foldSelectionState = true;}
 
    
 }

@@ -23,9 +23,11 @@ public class Player {
         this.hand.add(c);  
       }
 
-      public void removeCardFromHand(Card c){
+      public Card removeCardFromHand(Card c){
         
         this.hand.remove(c);
+
+        return c;
       }
 
 
@@ -51,13 +53,15 @@ public class Player {
     public Card getSelectedCard(){  
       Card c =  this.selectedCard;
       //this.selectedCard = null;
-      return c;
+      return removeCardFromHand(c);
     }
 
     public void SelectRandomCard(){
       Random r = new Random();
-      
-      setSelectedCard(hand.get(r.nextInt(hand.size()-1)));
+
+      if(hand.size() != 1){setSelectedCard(hand.get(r.nextInt(hand.size()-1)));}
+      else{setSelectedCard(hand.get(0));}
+        
 
     }
 

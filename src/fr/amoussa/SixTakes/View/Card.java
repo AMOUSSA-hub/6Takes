@@ -2,7 +2,6 @@ package fr.amoussa.SixTakes.View;
 
 import javax.swing.*;
 import java.awt.*;
-import fr.amoussa.SixTakes.Controller.*;
 import fr.amoussa.SixTakes.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 

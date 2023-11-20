@@ -240,6 +240,10 @@ localPlayerScore.setOpaque(false);
     this.localPlayerPanPlays.repaint();
     selectedCardPan.repaint();
     selectedCardPan.revalidate();
+    repaint();
+    revalidate();
+    
+    
 
 
   }
