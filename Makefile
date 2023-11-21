@@ -82,6 +82,9 @@ ${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java \
 ${BUILD}/View/MyJLabel.class:  ${SRC}/View/MyJLabel.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/MyJLabel.java
 
+${BUILD}/View/ResultFrame.class:  ${SRC}/View/ResultFrame.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/ResultFrame.java
+
 
 # CLASSES CONTROLLER#
 
@@ -100,7 +103,8 @@ ${BUILD}/Controller/FoldListener.class: ${SRC}/Controller/FoldListener.java
 
 ${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \
 	${BUILD}/Model/Player.class \
-	${BUILD}/Model/FoldModel.class
+	${BUILD}/Model/FoldModel.class \
+	${BUILD}/View/ResultFrame.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Game.java
 
 ${BUILD}/Model/FoldModel.class:  ${SRC}/Model/FoldModel.java

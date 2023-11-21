@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import fr.amoussa.SixTakes.Controller.FoldListener;
 import fr.amoussa.SixTakes.View.Card;
 import fr.amoussa.SixTakes.View.GameBoard;
+import fr.amoussa.SixTakes.View.ResultFrame;
 
 public class Game extends Timer {
 
@@ -135,8 +136,11 @@ public class Game extends Timer {
 
       }else{
         System.out.println("la partie est finie");
-        JOptionPane.showMessageDialog(this.gm, "La partie est finie", "Fin",
-        JOptionPane.INFORMATION_MESSAGE);
+        this.gm.renderScores(allPlayers);
+        // JOptionPane.showMessageDialog(this.gm, "La partie est finie", "Fin",
+        // JOptionPane.INFORMATION_MESSAGE);
+        new ResultFrame(allPlayers);
+
 
       }
 

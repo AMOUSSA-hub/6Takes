@@ -108,8 +108,16 @@ localPlayerScore.setOpaque(false);
     for(int i = 1; i<= nbr_player-1; i++){
 
       MyJLabel score = new MyJLabel("");
+      JPanel panPlayer = new JPanel(new GridLayout(2,1));
+      panPlayer.setOpaque(false);
+      panPlayer.add(new JLabel(new ImageIcon(Icone.player)));
+
+      MyJLabel namePlayer = new MyJLabel("joueur "+(i+1)); 
+      namePlayer.setHorizontalAlignment(SwingConstants.CENTER); 
+      panPlayer.add(namePlayer);
+
       
-      this.playerStackPan.add( new JLabel(new ImageIcon(Icone.player)));
+      this.playerStackPan.add(panPlayer);
       this.playerStackPan.add(score);
       
       this.printScorePlayer[i] = score;
@@ -134,9 +142,9 @@ localPlayerScore.setOpaque(false);
     gbc.gridheight = 1; 
     gbc.fill = GridBagConstraints.BOTH;    
     gbc.anchor = GridBagConstraints.CENTER; 
-    gbc.weightx = 1.0; 
-    gbc.weighty = 1.0;  
-    gbc.insets = new Insets(5, 5, 5,5); 
+    gbc.weightx = 0.0; 
+    gbc.weighty = 0.0;  
+    gbc.insets = new Insets(0, 0, 5,3); 
 
   add(gameStackPan,gbc);
   
@@ -161,8 +169,7 @@ localPlayerScore.setOpaque(false);
     gbc.anchor = GridBagConstraints.CENTER; 
     gbc.weightx = 1.0;  
     gbc.weighty = 1.0;  
-    gbc.insets = new Insets(1, 1, 1, 1);   
-   // localPlayerPan.setMinimumSize(new Dimension(300, 150));  
+    gbc.insets = new Insets(1, 1, 1, 1);     
   add(localPlayerPan,gbc);
 
  
@@ -173,8 +180,8 @@ localPlayerScore.setOpaque(false);
     gbc.gridheight = 1; 
     gbc.fill = GridBagConstraints.HORIZONTAL;    
     gbc.anchor = GridBagConstraints.PAGE_END; 
-    gbc.weightx = 0.0; 
-    gbc.weighty = 0.0;  
+    gbc.weightx = 1.0; 
+    gbc.weighty = 1.0;  
     gbc.insets = new Insets(1, 1, 1, 1);   
 
 
@@ -194,19 +201,7 @@ localPlayerScore.setOpaque(false);
     }
   
   }
-/**
- * Affiche les 4 piles du jeu 
- * @param folds
- */
-  // public void renderFolds(Fold[] folds){ 
-  //   for (Fold f : folds){
-  //     Card c = f.getLast();
 
-  //     this.gameStackPan.add(c);
-  //   }
-
-
-  // }
 /**
  * Affiche le minuteur
  * @param t

@@ -23,6 +23,7 @@ public class GameFen extends JFrame {
         
         add(view);
         setLocationRelativeTo(null);
+        pack();
         setVisible(true);       
     }    
 }
