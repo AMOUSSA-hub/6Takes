@@ -1,4 +1,4 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import fr.amoussa.SixTakes.Model.Player;
+import fr.amoussa.SixTakes.Solo.Model.Player;
 
 public class ResultFrame extends JDialog {
 

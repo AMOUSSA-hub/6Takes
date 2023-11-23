@@ -1,8 +1,9 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import javax.swing.*;
 import java.awt.*;
-import fr.amoussa.SixTakes.Model.Player;
+
+import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 
 
@@ -16,7 +17,7 @@ public class Card extends JComponent {
     public Card(int v ){
         this.value = v;
         setMinimumSize(new Dimension(50,70));
-        setPreferredSize(new Dimension(70,100));
+        setPreferredSize(new Dimension(50,70));
         
         
 

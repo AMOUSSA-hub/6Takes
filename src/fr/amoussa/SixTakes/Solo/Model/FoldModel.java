@@ -1,8 +1,8 @@
-package fr.amoussa.SixTakes.Model;
+package fr.amoussa.SixTakes.Solo.Model;
 
 import java.util.*;
 
-import fr.amoussa.SixTakes.View.Card;
+import fr.amoussa.SixTakes.Solo.View.Card;
 
 public class FoldModel extends LinkedList<Card> {
 

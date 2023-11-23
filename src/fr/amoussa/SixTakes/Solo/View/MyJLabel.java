@@ -1,4 +1,4 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import fr.amoussa.SixTakes.Controller.FoldListener;
+import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
 
 public class Fold extends JPanel {
 

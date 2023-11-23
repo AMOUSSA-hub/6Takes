@@ -1,9 +1,9 @@
-package fr.amoussa.SixTakes.Controller;
+package fr.amoussa.SixTakes.Solo.Controller;
 
 import java.awt.event.*;
 import java.util.*;
 
-import fr.amoussa.SixTakes.View.*;
+import fr.amoussa.SixTakes.Solo.View.*;
 
 public class FoldListener implements MouseListener{
    

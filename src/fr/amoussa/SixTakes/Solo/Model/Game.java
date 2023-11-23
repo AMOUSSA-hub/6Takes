@@ -1,17 +1,15 @@
-package fr.amoussa.SixTakes.Model;
+package fr.amoussa.SixTakes.Solo.Model;
 
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.sound.midi.Soundbank;
-import javax.swing.JOptionPane;
 
-import fr.amoussa.SixTakes.Controller.FoldListener;
-import fr.amoussa.SixTakes.View.Card;
-import fr.amoussa.SixTakes.View.GameBoard;
-import fr.amoussa.SixTakes.View.ResultFrame;
+import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
+import fr.amoussa.SixTakes.Solo.View.Card;
+import fr.amoussa.SixTakes.Solo.View.GameBoard;
+import fr.amoussa.SixTakes.Solo.View.ResultFrame;
 
 public class Game extends Timer {
 

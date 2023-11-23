@@ -45,76 +45,80 @@ clean_jar:
 # REGLES DE DEPENDANCE #
 
 ${BUILD}/App.class:  ${SRC}/App.java \
-	${BUILD}/View/Acceuil.class
+	${BUILD}/Solo/View/Acceuil.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/App.java
 
 # CLASSES VIEW#
 
-${BUILD}/View/Acceuil.class:  ${SRC}/View/Accueil.java \
-	${BUILD}/Controller/AcceuilListener.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Accueil.java
+${BUILD}/Solo/View/Acceuil.class:  ${SRC}/Solo/View/Accueil.java \
+	${BUILD}/Solo/Controller/AcceuilListener.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Accueil.java
 
-${BUILD}/View/Gamefen.class:  ${SRC}/View/Gamefen.java \
-	${BUILD}/View/FormNumberPlayer.class \
-	${BUILD}/View/GameBoard.class \
-	${BUILD}/Model/Game.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Gamefen.java
+${BUILD}/Solo/View/Gamefen.class:  ${SRC}/Solo/View/Gamefen.java \
+	${BUILD}/Solo/View/FormNumberPlayer.class \
+	${BUILD}/Solo/View/GameBoard.class \
+	${BUILD}/Solo/Model/Game.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Gamefen.java
 
-${BUILD}/View/FormNumberPlayer.class: ${SRC}/View/FormNumberPlayer.java 
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/FormNumberPlayer.java
+${BUILD}/Solo/View/FormNumberPlayer.class: ${SRC}/Solo/View/FormNumberPlayer.java 
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/FormNumberPlayer.java
 
-${BUILD}/View/GameBoard.class: ${SRC}/View/GameBoard.java \
-	${BUILD}/View/Card.class \
-	${BUILD}/Controller/DeckListener.class \
-	${BUILD}/View/Fold.class \
-	${BUILD}/View/MyJLabel.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/GameBoard.java
+${BUILD}/Solo/View/GameBoard.class: ${SRC}/Solo/View/GameBoard.java \
+	${BUILD}/Solo/View/Card.class \
+	${BUILD}/Solo/Controller/DeckListener.class \
+	${BUILD}/Solo/View/Fold.class \
+	${BUILD}/Solo/View/MyJLabel.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/GameBoard.java
 
-${BUILD}/View/Card.class: ${SRC}/View/Card.java \
+${BUILD}/Solo/View/Card.class: ${SRC}/Solo/View/Card.java \
 	${BUILD}/Utils/Icone.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Card.java	
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Card.java	
 
 
-${BUILD}/View/Fold.class:  ${SRC}/View/Fold.java \
-	${BUILD}/Controller/FoldListener.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/Fold.java
+${BUILD}/Solo/View/Fold.class:  ${SRC}/Solo/View/Fold.java \
+	${BUILD}/Solo/Controller/FoldListener.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Fold.java
 
-${BUILD}/View/MyJLabel.class:  ${SRC}/View/MyJLabel.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/MyJLabel.java
+${BUILD}/Solo/View/MyJLabel.class:  ${SRC}/Solo/View/MyJLabel.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/MyJLabel.java
 
-${BUILD}/View/ResultFrame.class:  ${SRC}/View/ResultFrame.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/View/ResultFrame.java
+${BUILD}/Solo/View/ResultFrame.class:  ${SRC}/Solo/View/ResultFrame.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/ResultFrame.java
+
+${BUILD}/Multijoueur/View/Lobby.class:  ${SRC}/Multijoueur/View/Lobby.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Multijoueur/View/Lobby.java
 
 
 # CLASSES CONTROLLER#
 
-${BUILD}/Controller/AcceuilListener.class:  ${SRC}/Controller/AccueilListener.java \
-	${BUILD}/View/Gamefen.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/AccueilListener.java
+${BUILD}/Solo/Controller/AcceuilListener.class:  ${SRC}/Solo/Controller/AccueilListener.java \
+	${BUILD}/Solo/View/Gamefen.class \
+	${BUILD}/Multijoueur/View/Lobby.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Controller/AccueilListener.java
 
 
-${BUILD}/Controller/DeckListener.class: ${SRC}/Controller/DeckListener.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/DeckListener.java
+${BUILD}/Solo/Controller/DeckListener.class: ${SRC}/Solo/Controller/DeckListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Controller/DeckListener.java
 
 
-${BUILD}/Controller/FoldListener.class: ${SRC}/Controller/FoldListener.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Controller/FoldListener.java
+${BUILD}/Solo/Controller/FoldListener.class: ${SRC}/Solo/Controller/FoldListener.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Controller/FoldListener.java
 # CLASSES MODEL#
 
-${BUILD}/Model/Game.class:  ${SRC}/Model/Game.java \
-	${BUILD}/Model/Player.class \
-	${BUILD}/Model/FoldModel.class \
-	${BUILD}/View/ResultFrame.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Game.java
+${BUILD}/Solo/Model/Game.class:  ${SRC}/Solo/Model/Game.java \
+	${BUILD}/Solo/Model/Player.class \
+	${BUILD}/Solo/Model/FoldModel.class \
+	${BUILD}/Solo/View/ResultFrame.class
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/Game.java
 
-${BUILD}/Model/FoldModel.class:  ${SRC}/Model/FoldModel.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/FoldModel.java
+${BUILD}/Solo/Model/FoldModel.class:  ${SRC}/Solo/Model/FoldModel.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/FoldModel.java
 
 
-${BUILD}/Model/Player.class:  ${SRC}/Model/Player.java
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Model/Player.java
+${BUILD}/Solo/Model/Player.class:  ${SRC}/Solo/Model/Player.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/Player.java
 
-# CLASSES MODEL#
+# CLASSES UTILS#
 
 
 

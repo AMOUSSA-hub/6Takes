@@ -1,4 +1,4 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import java.awt.*;
 
@@ -8,9 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import fr.amoussa.SixTakes.Controller.*;
+
+import fr.amoussa.SixTakes.Solo.Controller.*;
+import fr.amoussa.SixTakes.Solo.View.*;
 import fr.amoussa.SixTakes.Utils.Icone;
-import fr.amoussa.SixTakes.View.*;
 
 public class FormNumberPlayer extends JDialog {
 

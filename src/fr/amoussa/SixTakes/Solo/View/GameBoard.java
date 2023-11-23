@@ -1,13 +1,11 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
 
-
-
-import fr.amoussa.SixTakes.Model.Player;
+import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 
 public class GameBoard extends JPanel {

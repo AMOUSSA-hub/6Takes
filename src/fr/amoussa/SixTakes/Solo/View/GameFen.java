@@ -1,12 +1,12 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-import fr.amoussa.SixTakes.Model.Game;
+import fr.amoussa.SixTakes.Solo.Model.Game;
+import fr.amoussa.SixTakes.Solo.View.FormNumberPlayer;
 import fr.amoussa.SixTakes.Utils.Icone;
-import fr.amoussa.SixTakes.View.FormNumberPlayer;
 
 public class GameFen extends JFrame {
 

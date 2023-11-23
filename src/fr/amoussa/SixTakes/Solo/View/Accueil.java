@@ -1,9 +1,9 @@
-package fr.amoussa.SixTakes.View;
+package fr.amoussa.SixTakes.Solo.View;
 
 
 import javax.swing.*;
 
-import fr.amoussa.SixTakes.Controller.*;
+import fr.amoussa.SixTakes.Solo.Controller.*;
 
 import java.awt.*;
 

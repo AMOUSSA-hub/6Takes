@@ -1,4 +1,4 @@
-package fr.amoussa.SixTakes.Controller;
+package fr.amoussa.SixTakes.Solo.Controller;
 
 import java.awt.event.*;
 import java.util.Timer;
@@ -6,8 +6,8 @@ import java.util.TimerTask;
 
 import javax.swing.text.PlainDocument;
 
-import fr.amoussa.SixTakes.Model.Player;
-import fr.amoussa.SixTakes.View.*;
+import fr.amoussa.SixTakes.Solo.Model.Player;
+import fr.amoussa.SixTakes.Solo.View.*;
 
 public class DeckListener implements MouseListener{
 

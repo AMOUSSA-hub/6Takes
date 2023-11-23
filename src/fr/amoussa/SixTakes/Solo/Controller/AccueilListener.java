@@ -1,7 +1,9 @@
-package fr.amoussa.SixTakes.Controller;
+package fr.amoussa.SixTakes.Solo.Controller;
 import java.awt.event.*;
 import javax.swing.*;
-import fr.amoussa.SixTakes.View.*;
+
+import fr.amoussa.SixTakes.Multijoueur.View.Lobby;
+import fr.amoussa.SixTakes.Solo.View.*;
 
 public class AccueilListener implements ActionListener {
 
@@ -27,9 +29,12 @@ public class AccueilListener implements ActionListener {
         }
 
         if( e.getActionCommand() =="Multijoueur"){
-            JOptionPane.showMessageDialog(fen, "Cette section n'est pas encore disponible", "Info",
-        JOptionPane.INFORMATION_MESSAGE);
+            String[] option = {"Créer une partie","Rejoindre une partie"};
+            int c = JOptionPane.showOptionDialog(fen, "", "Multijoueur", JOptionPane.DEFAULT_OPTION, 0, null,option, e);
             
+            if(c== 0){
+                new Lobby();
+            }
         } 
     }   
 }

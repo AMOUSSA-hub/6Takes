@@ -1,9 +1,9 @@
-package fr.amoussa.SixTakes.Model;
+package fr.amoussa.SixTakes.Solo.Model;
 
 import java.util.*;
 
-import fr.amoussa.SixTakes.Controller.DeckListener;
-import fr.amoussa.SixTakes.View.*;
+import fr.amoussa.SixTakes.Solo.Controller.DeckListener;
+import fr.amoussa.SixTakes.Solo.View.*;
 
 
 public class Player {
