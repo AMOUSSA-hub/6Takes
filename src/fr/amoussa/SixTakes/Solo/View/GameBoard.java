@@ -47,8 +47,9 @@ public class GameBoard extends JPanel {
 
 
   JButton quit = new JButton("Quitter la partie");
+  JButton pause = new JButton("Pause");
   quit.addActionListener(e-> System.exit(0));
- 
+  pause.addActionListener(e -> new PauseFen((JFrame)this.getTopLevelAncestor()));
   
 
   this.chrono = new MyJLabel();
@@ -162,7 +163,7 @@ localPlayerScore.setOpaque(false);
     gbc.gridx = 1;      
     gbc.gridy = 3;     
     gbc.gridwidth = 1;  
-    gbc.gridheight = 1; 
+    gbc.gridheight = 2; 
     gbc.fill = GridBagConstraints.BOTH;    
     gbc.anchor = GridBagConstraints.CENTER; 
     gbc.weightx = 1.0;  
@@ -170,20 +171,36 @@ localPlayerScore.setOpaque(false);
     gbc.insets = new Insets(1, 1, 1, 1);     
   add(localPlayerPan,gbc);
 
- 
-//Mise en place du bouton quitter
-    gbc.gridx = 2;     
+
+   gbc.gridx = 2;     
     gbc.gridy = 3;     
     gbc.gridwidth = 1;  
     gbc.gridheight = 1; 
-    gbc.fill = GridBagConstraints.HORIZONTAL;    
-    gbc.anchor = GridBagConstraints.PAGE_END; 
+    gbc.fill = GridBagConstraints.BOTH;    
+    gbc.anchor = GridBagConstraints.CENTER; 
+    gbc.weightx = 1.0; 
+    gbc.weighty = 1.0;  
+    gbc.insets = new Insets(1, 1, 1, 1);   
+
+
+  add(pause,gbc);
+
+
+ 
+//Mise en place du bouton quitter
+    gbc.gridx = 2;     
+    gbc.gridy = 4;     
+    gbc.gridwidth = 1;  
+    gbc.gridheight = 1; 
+    gbc.fill = GridBagConstraints.BOTH;    
+    gbc.anchor = GridBagConstraints.CENTER; 
     gbc.weightx = 1.0; 
     gbc.weighty = 1.0;  
     gbc.insets = new Insets(1, 1, 1, 1);   
 
 
   add(quit,gbc);
+  
 
   
   }

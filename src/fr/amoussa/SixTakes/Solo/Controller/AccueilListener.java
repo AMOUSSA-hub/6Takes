@@ -30,7 +30,7 @@ public class AccueilListener implements ActionListener {
 
         if( e.getActionCommand() =="Multijoueur"){
             String[] option = {"Créer une partie","Rejoindre une partie"};
-            int c = JOptionPane.showOptionDialog(fen, "", "Multijoueur", JOptionPane.DEFAULT_OPTION, 0, null,option, e);
+            int c = JOptionPane.showOptionDialog(fen, "Choisissez :", "Multijoueur", JOptionPane.DEFAULT_OPTION, 0, null,option, e);
             
             if(c== 0){
                 new Lobby();

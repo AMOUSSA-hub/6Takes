@@ -28,6 +28,9 @@ run_W :${BUILD}/App.class
 jar:${JAR_FILE}
 	${EXEC_JAR} ${JAR_FILE}
 
+server: ${BUILD}/Server/GameServer.class
+	${JAVA} ${JAVA_OPTIONS} fr.amoussa.SixTakes.Server.GameServer 1024
+
 # POUR WINDOWS#
 clean_W : 
 	rd /s /q ${BUILD_WINDOWS}
@@ -67,7 +70,8 @@ ${BUILD}/Solo/View/GameBoard.class: ${SRC}/Solo/View/GameBoard.java \
 	${BUILD}/Solo/View/Card.class \
 	${BUILD}/Solo/Controller/DeckListener.class \
 	${BUILD}/Solo/View/Fold.class \
-	${BUILD}/Solo/View/MyJLabel.class
+	${BUILD}/Solo/View/MyJLabel.class \
+	${BUILD}/Solo/View/PauseFen.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/GameBoard.java
 
 ${BUILD}/Solo/View/Card.class: ${SRC}/Solo/View/Card.java \
@@ -85,8 +89,12 @@ ${BUILD}/Solo/View/MyJLabel.class:  ${SRC}/Solo/View/MyJLabel.java
 ${BUILD}/Solo/View/ResultFrame.class:  ${SRC}/Solo/View/ResultFrame.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/ResultFrame.java
 
-${BUILD}/Multijoueur/View/Lobby.class:  ${SRC}/Multijoueur/View/Lobby.java
+${BUILD}/Multijoueur/View/Lobby.class:  ${SRC}/Multijoueur/View/Lobby.java \
+	${BUILD}/Server/Client.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Multijoueur/View/Lobby.java
+
+${BUILD}/Solo/View/PauseFen.class:  ${SRC}/Solo/View/PauseFen.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/PauseFen.java
 
 
 # CLASSES CONTROLLER#
@@ -126,7 +134,22 @@ ${BUILD}/Utils/Icone.class:  ${SRC}/Utils/Icone.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Utils/Icone.java
 
 
+# SERVER #
+
+${BUILD}/Server/Client.class:  ${SRC}/Server/Client.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/Client.java
+
+
+${BUILD}/Server/GameServer.class:  ${SRC}/Server/GameServer.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/GameServer.java
+
+
+
+
 # ## JARS ##
 
  ${JAR_FILE} : ${BUILD}/App.class
 	${JAR} cvfe ${JAR_FILE}  fr.amoussa.SixTakes.App -C build .  -C res .
+
+
+

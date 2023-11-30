@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.util.*;
 
+import fr.amoussa.SixTakes.Server.Client;
 import fr.amoussa.SixTakes.Solo.View.GameFen;
 
 public class Lobby extends JDialog {
@@ -15,7 +16,7 @@ public class Lobby extends JDialog {
         setSize(200,200);
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-         setLocationRelativeTo(null);
+         
         DefaultListModel<String> listModel = new DefaultListModel<>();
         JList playerList = new JList<>(listModel);
         listModel.addElement("Joueur 1");
@@ -27,9 +28,11 @@ public class Lobby extends JDialog {
         //confirm.addActionListener(e ->{new GameFen((Integer)nbr_player.getValue());this.dispose();});
         add(playerList,BorderLayout.NORTH);
         add(confirm,BorderLayout.SOUTH);
-        pack();
-       
+
+       setLocationRelativeTo(null);
         setVisible(true);
+
+        new Client("localhost",1024);
     }
 
 
