@@ -58,20 +58,17 @@ public class GameServer {
 
     }
 
-   public void sendToAllClient(String s){
+   public void sendToAllClient(String s) throws IOException{
     
     for (Socket sock :   this.allClient) {
-
-        try {
 
             OutputStream output = sock.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output)); 
             bw.write(s+ "[envoyé à "+this.allClient.size()+" clients]");
             bw.newLine();
             bw.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            bw.close();
+       
     }
 
    }
@@ -115,7 +112,8 @@ class ServerListener implements Runnable{
             String line ="";
 
             while((line=br.readLine())!= null){
-                if(line != null){System.out.println(line);}
+                System.out.println(line);
+                System.out.println("blabla");
 
             }
         
@@ -157,8 +155,9 @@ class Sender implements Runnable{
 System.out.println("le serveur peut maitenant écrire");
                      
 
-                    while(((s = bf.readLine())) != null){              
+                    while(((s = bf.readLine())) != null){            
                             server.sendToAllClient("Serveur: "+s);
+
                     }
         } catch (IOException e) {
            

@@ -39,7 +39,8 @@ public class Client {
         OutputStream output = this.sock.getOutputStream();
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output)); 
-       
+
+
                             bw.write(msg);
                             bw.newLine();
                             bw.flush();

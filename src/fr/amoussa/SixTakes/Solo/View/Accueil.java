@@ -27,6 +27,7 @@ public class Accueil extends JFrame {
         solo.addActionListener(new AccueilListener(this));
         multi.addActionListener(new AccueilListener(this));
         quit.addActionListener(e -> this.dispose());
+        setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
     } 
