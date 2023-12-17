@@ -29,7 +29,7 @@ jar:${JAR_FILE}
 	${EXEC_JAR} ${JAR_FILE}
 
 server: ${BUILD}/Server/GameServer.class
-	${JAVA} ${JAVA_OPTIONS} fr.amoussa.SixTakes.Server.GameServer 1024
+	${JAVA} ${JAVA_OPTIONS} fr.amoussa.SixTakes.Server.GameServer 2023
 
 # POUR WINDOWS#
 clean_W : 
@@ -116,11 +116,19 @@ ${BUILD}/Solo/Controller/FoldListener.class: ${SRC}/Solo/Controller/FoldListener
 ${BUILD}/Solo/Model/Game.class:  ${SRC}/Solo/Model/Game.java \
 	${BUILD}/Solo/Model/Player.class \
 	${BUILD}/Solo/Model/FoldModel.class \
-	${BUILD}/Solo/View/ResultFrame.class
+	${BUILD}/Solo/View/ResultFrame.class \
+	${BUILD}/Solo/Model/Round.class \
+	${BUILD}/Solo/Model/FoldSelection.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/Game.java
 
 ${BUILD}/Solo/Model/FoldModel.class:  ${SRC}/Solo/Model/FoldModel.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/FoldModel.java
+
+${BUILD}/Solo/Model/Round.class:  ${SRC}/Solo/Model/Round.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/Round.java	
+
+${BUILD}/Solo/Model/FoldSelection.class:  ${SRC}/Solo/Model/FoldSelection.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Model/FoldSelection.java
 
 
 ${BUILD}/Solo/Model/Player.class:  ${SRC}/Solo/Model/Player.java

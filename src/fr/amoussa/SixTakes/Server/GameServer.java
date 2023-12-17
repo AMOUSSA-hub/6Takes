@@ -24,12 +24,13 @@ public class GameServer {
             System.out.println("Le serveur est ouvert !");
             System.out.println(ss.toString());
             Thread sender = new Thread(new Sender(this));
-            sender.start();
+            //sender.start();
             while(true){
               Socket   sock =  ss.accept();
               allClient.add(sock);
 
                  Thread listener =new Thread(new ServerListener(sock,this));
+                 listener.start();
                  
 
                   System.out.println("Le joueur "+allClient.size()+"a rejoint la partie");
@@ -37,7 +38,7 @@ public class GameServer {
                     System.out.println(sock.toString());
                  
                     
-                     listener.start();
+                     
                      
                 }
             
@@ -117,11 +118,10 @@ class ServerListener implements Runnable{
 
             }
         
-        br.close();
-        this.sock.close();
+        //br.close();
         } catch (IOException e) {
-           System.out.println("Un joueur c'est déconnecté");
-          System.out.println(this.server.deleteClient(sock));
+          System.out.println("Un joueur c'est déconnecté");
+          this.server.deleteClient(sock);
             
            //e.printStackTrace();
         }

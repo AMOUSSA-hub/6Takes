@@ -12,9 +12,12 @@ public class Accueil extends JFrame {
 
 
     public Accueil(){
+
+
+        getContentPane().setBackground(new Color(55,131,65));
         
         setSize(300,200);
-        setLayout(new GridLayout(3,1));
+        setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
         JButton solo = new JButton("Partie Solo");
@@ -28,6 +31,7 @@ public class Accueil extends JFrame {
         multi.addActionListener(new AccueilListener(this));
         quit.addActionListener(e -> this.dispose());
         setResizable(false);
+        pack();
         setLocationRelativeTo(null);
         setVisible(true);
     } 

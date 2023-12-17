@@ -52,7 +52,6 @@ public class Player {
 
     public Card getSelectedCard(){  
       Card c =  this.selectedCard;
-      //this.selectedCard = null;
       return removeCardFromHand(c);
     }
 
@@ -70,6 +69,9 @@ public class Player {
     public void addMalus(int m){ this.malus += m; }
 
     public void resetCardSelection(){
+      this.selectedCard.setHover(false);
+      this.selectedCard.repaint();
+      this.selectedCard.revalidate();
       this.selectedCard = null;
     }
 

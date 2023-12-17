@@ -57,6 +57,7 @@ public class Card extends JComponent {
       /// obligatoire : on crée un nouveau pinceau pour pouvoir le modifier plus tard
     Graphics p = g.create();
     // obligatoire : si le composant n'est pas censé être transparent
+    Graphics2D g2d = (Graphics2D) g;
     if (this.isOpaque()) {
       // obligatoire : on repeint toute la surface avec la couleur de fond
       p.setColor(this.getBackground());
@@ -75,8 +76,9 @@ public class Card extends JComponent {
         }
 
         if(this.hover){
-        p.setColor(Color.RED);
-        p.drawRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
+        g2d.setStroke(new BasicStroke(5.0f));
+        g2d.setColor(Color.BLACK);
+        g2d.drawRoundRect(0,0,(int)Math.round(this.getWidth()),(int)Math.round(this.getHeight()),15,15);
         }
     }
 

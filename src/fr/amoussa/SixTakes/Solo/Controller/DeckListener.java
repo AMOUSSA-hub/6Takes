@@ -9,23 +9,24 @@ import javax.swing.text.PlainDocument;
 import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Solo.View.*;
 
-public class DeckListener implements MouseListener{
+public class DeckListener implements MouseListener {
 
     private Card ca;
     private Player p;
     private static Card last_clicked;
 
-    public DeckListener(  Card c, Player p){
+    public DeckListener(Card c, Player p) {
         this.ca = c;
-        this.p = p; 
+        this.p = p;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
-         if(last_clicked != null){
+        if (last_clicked != null) {
             last_clicked.setHover(false);
             last_clicked.repaint();
             last_clicked.revalidate();
@@ -36,14 +37,12 @@ public class DeckListener implements MouseListener{
         ca.setHover(true);
         ca.repaint();
         ca.revalidate();
-        
 
-       
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
@@ -51,18 +50,17 @@ public class DeckListener implements MouseListener{
         ca.setHover(true);
         ca.repaint();
         ca.revalidate();
-       
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
 
-        if(this.p.getSelectedCard() != ca){
+        if (this.p.getSelectedCard() != ca) {
             ca.setHover(false);
             ca.repaint();
             ca.revalidate();
         }
 
-    } 
+    }
 }
-

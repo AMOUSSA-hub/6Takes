@@ -32,7 +32,7 @@ public class Lobby extends JDialog {
        setLocationRelativeTo(null);
         setVisible(true);
 
-        new Client("localhost",1024);
+        new Client("localhost",2023);
     }
 
 

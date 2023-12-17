@@ -22,7 +22,14 @@ public class FoldListener implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if(selectable){
+
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+                if(selectable){
         
             if(foldSelected != null){
             foldSelected.setHover(false);
@@ -35,11 +42,6 @@ public class FoldListener implements MouseListener{
             foldSelected.revalidate();
         }
         
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
        
     }
 

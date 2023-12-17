@@ -1,11 +1,13 @@
 package fr.amoussa.SixTakes.Server;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Client {
     private Socket sock;
+    private String server_id;
 
 
     public Client(String address,int port){
@@ -18,10 +20,12 @@ public class Client {
 
             
                            
-                    Thread t =new Thread(new Receiver(sock));
+                    Thread t =new Thread(new Receiver(this));
+                    t.start();
                     sendMessage("1er connexion");
 
-                     t.start();
+                     
+                    
                 
 
         } catch (UnknownHostException e) {
@@ -44,7 +48,6 @@ public class Client {
                             bw.write(msg);
                             bw.newLine();
                             bw.flush();
-
                             bw.close();
                             output.close();
 
@@ -57,13 +60,12 @@ public class Client {
     
 }
 class Receiver implements Runnable{
+    private Client c;
 
-    private Socket sock;
-
-    public Receiver(Socket s){
-        this.sock = s;
-
+    public Receiver(Client c){
+        this.c = c;
     }
+
 
     @Override
     public void run() {
@@ -72,25 +74,30 @@ class Receiver implements Runnable{
 
         try {
          
-
-            InputStream input = this.sock.getInputStream();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(input));
+            ServerSocket ss = new ServerSocket(2023);
+           
 
 
             String line ="";
+            while(true){
+                Socket sock = ss.accept();
+                  BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                    System.out.println("blabla");
+                        while((line=br.readLine())!= null){
+                            if(line != null){System.out.println(line);}
 
-            while((line=br.readLine())!= null){
-                if(line != null){System.out.println(line);}
-
+                        }
+                        System.out.println("connexion fermé");
+                    
+                    br.close();
+                    sock.close();
             }
-            System.out.println("connexion fermé");
-        
-        br.close();
-        this.sock.close();
         } catch (IOException e) {
+            
            System.out.println("Vous avez été déconnecté du serveur !");
-           // e.printStackTrace();
+        }
+        finally{
+            System.out.println("blabla");
         }
     
     }

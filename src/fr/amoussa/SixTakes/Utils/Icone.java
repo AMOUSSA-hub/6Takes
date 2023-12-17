@@ -2,8 +2,6 @@ package fr.amoussa.SixTakes.Utils;
 
 import java.awt.Dimension;
 import java.awt.Image;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Icone {
