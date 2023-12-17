@@ -20,7 +20,7 @@ public class Game extends Timer {
     this.gm = view;
     this.allFolds = new ArrayList<>();
     this.allPlayers = new ArrayList<>();
-    this.roundRemaining = 1;
+    this.roundRemaining = 10;
 
     for (int i = 0; i < 4; i++) {
       this.allFolds.add(new FoldModel());
