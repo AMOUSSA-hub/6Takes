@@ -10,7 +10,9 @@ import fr.amoussa.SixTakes.Solo.Model.Game;
 import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Solo.Model.Round;
 import fr.amoussa.SixTakes.Utils.Icone;
-
+/**
+ * Panneau représentant l'ensemble du plateau de jeu
+ */
 public class GameBoard extends JPanel {
 
   private JPanel gameStackPan;
