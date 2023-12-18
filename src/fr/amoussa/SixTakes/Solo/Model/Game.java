@@ -3,6 +3,8 @@ package fr.amoussa.SixTakes.Solo.Model;
 import java.util.*;
 import java.util.concurrent.*;
 
+import javax.swing.JFrame;
+
 import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
 import fr.amoussa.SixTakes.Solo.View.Card;
 import fr.amoussa.SixTakes.Solo.View.GameBoard;
@@ -102,7 +104,7 @@ public class Game extends Timer {
   }
 
   public void startRound() {
-    schedule(new Round(5, this), 1000, 1000);
+    schedule(new Round(10, this), 1000, 1000);
   }
 
   public GameBoard getView() {
@@ -137,7 +139,7 @@ public class Game extends Timer {
       this.gm.renderScores(allPlayers);
       // JOptionPane.showMessageDialog(this.gm, "La partie est finie", "Fin",
       // JOptionPane.INFORMATION_MESSAGE);
-      new ResultFrame(allPlayers);
+      new ResultFrame(allPlayers, (JFrame) gm.getTopLevelAncestor());
 
     }
 

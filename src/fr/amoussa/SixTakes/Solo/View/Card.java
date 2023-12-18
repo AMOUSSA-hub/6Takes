@@ -6,7 +6,9 @@ import java.awt.*;
 import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Utils.Icone;
 
-
+/**
+ *  une carte (représentation graphique)
+ */
 public class Card extends JComponent {
 
     private int malus;

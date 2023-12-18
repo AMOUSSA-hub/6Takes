@@ -48,7 +48,10 @@ public class GameBoard extends JPanel {
     JButton quit = new JButton("Quitter la partie");
     JButton pause = new JButton("Pause");
     quit.addActionListener(e -> System.exit(0));
-    pause.addActionListener(e -> {Game.setPaused(true);new PauseFen((JFrame) this.getTopLevelAncestor());});
+    pause.addActionListener(e -> {
+      Game.setPaused(true);
+      new PauseFen((JFrame) this.getTopLevelAncestor());
+    });
 
     this.chrono = new MyJLabel();
     this.chrono.setFont(new Font("Sérif", Font.BOLD, 30));

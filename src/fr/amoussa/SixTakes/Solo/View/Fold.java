@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
-
+/**-
+ * Une pile de carte (representation graphique)
+ */
 public class Fold extends JPanel {
 
     private boolean hover= false;

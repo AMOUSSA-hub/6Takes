@@ -7,11 +7,12 @@ import java.net.UnknownHostException;
 
 public class Client {
     private Socket sock;
-    private String server_id;
+    private String pseudo;
 
 
-    public Client(String address,int port){
+    public Client(String address,int port, String pseudo){
 
+        this.pseudo = pseudo;
          try {
              sock = new Socket(address,port);
 
@@ -22,7 +23,7 @@ public class Client {
                            
                     Thread t =new Thread(new Receiver(this));
                     t.start();
-                    sendMessage("1er connexion");
+                    sendMessage(FormattedMessage.serverConnexion(pseudo));
 
                      
                     
@@ -45,7 +46,7 @@ public class Client {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output)); 
 
 
-                            bw.write(msg);
+                            bw.write(this.pseudo+": "+msg);
                             bw.newLine();
                             bw.flush();
                             bw.close();
@@ -55,7 +56,7 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        new Client(args[0], Integer.parseInt(args[1]));
+        new Client(args[0], Integer.parseInt(args[1]),args[2]);
     }
     
 }
@@ -82,7 +83,6 @@ class Receiver implements Runnable{
             while(true){
                 Socket sock = ss.accept();
                   BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-                    System.out.println("blabla");
                         while((line=br.readLine())!= null){
                             if(line != null){System.out.println(line);}
 

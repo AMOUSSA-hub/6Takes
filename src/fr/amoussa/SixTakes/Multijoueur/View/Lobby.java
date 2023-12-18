@@ -2,10 +2,6 @@ package fr.amoussa.SixTakes.Multijoueur.View;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.util.*;
-
-import fr.amoussa.SixTakes.Server.Client;
-import fr.amoussa.SixTakes.Solo.View.GameFen;
 
 public class Lobby extends JDialog {
 
@@ -32,7 +28,7 @@ public class Lobby extends JDialog {
        setLocationRelativeTo(null);
         setVisible(true);
 
-        new Client("localhost",2023);
+        
     }
 
 

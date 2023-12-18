@@ -31,6 +31,9 @@ jar:${JAR_FILE}
 server: ${BUILD}/Server/GameServer.class
 	${JAVA} ${JAVA_OPTIONS} fr.amoussa.SixTakes.Server.GameServer 2023
 
+client: ${BUILD}/Server/Client.class
+	${JAVA} ${JAVA_OPTIONS} fr.amoussa.SixTakes.Server.Client 172.31.252.86 2023 Machine_local 
+
 # POUR WINDOWS#
 clean_W : 
 	rd /s /q ${BUILD_WINDOWS}
@@ -57,11 +60,11 @@ ${BUILD}/Solo/View/Acceuil.class:  ${SRC}/Solo/View/Accueil.java \
 	${BUILD}/Solo/Controller/AcceuilListener.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Accueil.java
 
-${BUILD}/Solo/View/Gamefen.class:  ${SRC}/Solo/View/Gamefen.java \
+${BUILD}/Solo/View/GameFen.class:  ${SRC}/Solo/View/GameFen.java \
 	${BUILD}/Solo/View/FormNumberPlayer.class \
 	${BUILD}/Solo/View/GameBoard.class \
 	${BUILD}/Solo/Model/Game.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Gamefen.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/GameFen.java
 
 ${BUILD}/Solo/View/FormNumberPlayer.class: ${SRC}/Solo/View/FormNumberPlayer.java 
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/FormNumberPlayer.java
@@ -100,7 +103,7 @@ ${BUILD}/Solo/View/PauseFen.class:  ${SRC}/Solo/View/PauseFen.java
 # CLASSES CONTROLLER#
 
 ${BUILD}/Solo/Controller/AcceuilListener.class:  ${SRC}/Solo/Controller/AccueilListener.java \
-	${BUILD}/Solo/View/Gamefen.class \
+	${BUILD}/Solo/View/GameFen.class \
 	${BUILD}/Multijoueur/View/Lobby.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/Controller/AccueilListener.java
 
@@ -144,12 +147,17 @@ ${BUILD}/Utils/Icone.class:  ${SRC}/Utils/Icone.java
 
 # SERVER #
 
-${BUILD}/Server/Client.class:  ${SRC}/Server/Client.java
+${BUILD}/Server/Client.class:  ${SRC}/Server/Client.java \
+	${BUILD}/Server/FormattedMessage.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/Client.java
 
 
 ${BUILD}/Server/GameServer.class:  ${SRC}/Server/GameServer.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/GameServer.java
+
+
+${BUILD}/Server/FormattedMessage.class:  ${SRC}/Server/FormattedMessage.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/FormattedMessage.java
 
 
 

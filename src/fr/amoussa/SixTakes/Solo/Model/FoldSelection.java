@@ -20,16 +20,16 @@ public class FoldSelection extends TimerTask {
   @Override
   public void run() {
 
-    //if (!Game.isPaused()) {
-      this.g.getView().renderChrono("<html>Choisissez une pile <br>" + this.time + "</html>");
-      if (this.time == 0) {
-        this.g.getView().renderChrono("");
-        FoldListener.setSelectable(false);
-        cancel();
-      }
+    // if (!Game.isPaused()) {
+    this.g.getView().renderChrono("<html>Choisissez une pile <br>" + this.time + "</html>");
+    if (this.time == 0) {
+      this.g.getView().renderChrono("");
+      FoldListener.setSelectable(false);
+      cancel();
+    }
 
-      this.time--;
-   // }
+    this.time--;
+    // }
 
   }
 }
