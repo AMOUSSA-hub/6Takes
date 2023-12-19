@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import fr.amoussa.SixTakes.Multijoueur.View.Lobby;
 import fr.amoussa.SixTakes.Solo.View.*;
-
+/**
+ * Listener gérant les boutons de la fenêtre d'accueil.
+ */
 public class AccueilListener implements ActionListener {
 
     private JFrame fen ;
@@ -30,11 +32,12 @@ public class AccueilListener implements ActionListener {
 
         if( e.getActionCommand() =="Multijoueur"){
             String[] option = {"Créer une partie","Rejoindre une partie"};
-            int c = JOptionPane.showOptionDialog(fen, "Choisissez :", "Multijoueur", JOptionPane.DEFAULT_OPTION, 0, null,option, e);
+            JOptionPane.showMessageDialog(fen, "Cette section n'est pas encore disponible", "à venir", 0);
+            // int c = JOptionPane.showOptionDialog(fen, "Choisissez :", "Multijoueur", JOptionPane.DEFAULT_OPTION, 0, null,option, e);
             
-            if(c== 0){
-                new Lobby();
-            }
+            // if(c== 0){
+            //     new Lobby();
+            // }
         } 
     }   
 }

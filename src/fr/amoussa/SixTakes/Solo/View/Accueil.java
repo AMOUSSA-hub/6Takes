@@ -8,12 +8,12 @@ import fr.amoussa.SixTakes.Utils.Icone;
 
 import java.awt.*;
 /**
- * Fenêtre représentant de l'accueil
+ * Fenêtre d'accueil
  */
 public class Accueil extends JFrame {
 
     public Accueil() {
-        setTitle("Page d'Accueil");
+        setTitle("6Takes");
         this.setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(900, 500));

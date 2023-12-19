@@ -2,7 +2,9 @@ package fr.amoussa.SixTakes.Multijoueur.View;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
-
+/**
+ * Salon de connexion multijoueur.
+ */
 public class Lobby extends JDialog {
 
 

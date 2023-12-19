@@ -17,6 +17,11 @@ BUILD_WINDOWS = "build/fr/amoussa/SixTakes/"
 # CHOIX NOMS
 JAR_FILE =  6Takes.jar
 
+# AUTRE BUTS
+doc :
+	javadoc -d doc -encoding UTF-8  src/fr/amoussa/SixTakes/Solo/Controller/*.java src/fr/amoussa/SixTakes/Solo/View/*.java src/fr/amoussa/SixTakes/Solo/Model/*.java src/fr/amoussa/SixTakes/Utils/*.java src\fr\amoussa\SixTakes\App.java  src\fr\amoussa\SixTakes\Multijoueur/View/*.java 
+
+
 
 # BUT PAR DEFAUT #
 run : ${BUILD}/App.class
@@ -148,7 +153,7 @@ ${BUILD}/Utils/Icone.class:  ${SRC}/Utils/Icone.java
 # SERVER #
 
 ${BUILD}/Server/Client.class:  ${SRC}/Server/Client.java \
-	${BUILD}/Server/FormattedMessage.class
+	${BUILD}/Server/FormattedMessage.class	
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Server/Client.java
 
 

@@ -10,13 +10,15 @@ import fr.amoussa.SixTakes.Solo.View.Card;
 import fr.amoussa.SixTakes.Solo.View.GameBoard;
 import fr.amoussa.SixTakes.Solo.View.ResultFrame;
 
+/**
+ * Représentation de l'état actuel de la partie (classe principale du modèle).
+ */
 public class Game extends Timer {
 
   private List<Player> allPlayers;
   private ArrayList<FoldModel> allFolds;
   private GameBoard gm;
   private int roundRemaining;
-  private static boolean isPaused = false;
 
   public Game(int nbr_player, GameBoard view) {
     this.gm = view;
@@ -41,6 +43,9 @@ public class Game extends Timer {
 
   }
 
+  /**
+   * Distribution des cartes.
+   */
   public void Deal() {
     List<Card> deck = new LinkedList<Card>();
     for (int i = 1; i <= 104; i++) {
@@ -68,14 +73,27 @@ public class Game extends Timer {
 
   }
 
+  /**
+   * Getter pour l'ensemble des joueurs de la partie.
+   * 
+   * @return
+   */
   public List<Player> getAllPlayers() {
     return this.allPlayers;
   }
 
+  /**
+   * Getter pour toutes les piles(d'un point de vue modèle) de la partie.
+   * 
+   * @return
+   */
   public List<FoldModel> getAllFolds() {
     return this.allFolds;
   }
 
+  /**
+   * Getter permettant d'obtenir les cartes sélectionnées par tous les joueurs.
+   */
   public void getAllPlays() {
     List<Card> allPlays = new ArrayList<>();
     for (Player p : this.allPlayers) {
@@ -103,14 +121,27 @@ public class Game extends Timer {
 
   }
 
+  /**
+   * Commencer un tour.
+   */
   public void startRound() {
-    schedule(new Round(10, this), 1000, 1000);
+    schedule(new Round(5, this), 1000, 1000);
   }
 
+  /**
+   * Getter pour la vue associée à ce modèle.
+   * 
+   * @return
+   */
   public GameBoard getView() {
     return this.gm;
   }
 
+  /**
+   * Gérer les cartes jouées.
+   * 
+   * @param plays
+   */
   public void makePlays(List<Card> plays) {
 
     while (plays.size() != 0) {
@@ -137,14 +168,18 @@ public class Game extends Timer {
     } else {
       System.out.println("la partie est finie");
       this.gm.renderScores(allPlayers);
-      // JOptionPane.showMessageDialog(this.gm, "La partie est finie", "Fin",
-      // JOptionPane.INFORMATION_MESSAGE);
       new ResultFrame(allPlayers, (JFrame) gm.getTopLevelAncestor());
 
     }
 
   }
 
+  /**
+   * Placer les cartes dans les piles.
+   * 
+   * @param c
+   * @return
+   */
   public boolean dispactchCardInFolds(Card c) {
 
     List<FoldModel> copyallFolds = new ArrayList<>(this.allFolds);
@@ -224,14 +259,6 @@ public class Game extends Timer {
     }
 
     return true;
-  }
-
-  public static void setPaused(boolean b) {
-    isPaused = b;
-  }
-
-  public static boolean isPaused() {
-    return isPaused;
   }
 
 }

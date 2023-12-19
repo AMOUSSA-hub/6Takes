@@ -8,10 +8,13 @@ import fr.amoussa.SixTakes.Solo.Model.Game;
 import fr.amoussa.SixTakes.Solo.View.FormNumberPlayer;
 import fr.amoussa.SixTakes.Utils.Icone;
 
+/**
+ * Fenêtre de la partie.
+ */
 public class GameFen extends JFrame {
 
     public GameFen(int nbr_player) {
-
+        setTitle("6Takes");
         int hauteur = (int) Icone.tailleEcran.getHeight();
         int largeur = (int) Icone.tailleEcran.getWidth();
         setSize((int) (largeur * 0.7), (int) (hauteur * 0.7));

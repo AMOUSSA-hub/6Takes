@@ -7,8 +7,12 @@ import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 
+import fr.amoussa.SixTakes.Solo.Model.Game;
 import fr.amoussa.SixTakes.Solo.Model.Player;
 
+/**
+ * Fenêtre d'affichage du résultat final.
+ */
 public class ResultFrame extends JDialog {
 
     // Constructeur de la classe ResultFrame
@@ -22,11 +26,24 @@ public class ResultFrame extends JDialog {
 
         // Configuration de la boîte de dialogue
         setTitle("Résultats");
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         // Création d'un panneau pour une meilleure mise en page
         JPanel panneauPrincipal = new JPanel(new GridLayout(joueurs.size() + 1, 1, 20, 20));
         panneauPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        JButton goHome = new JButton("retour au menu");
+        JButton quit = new JButton("quitter");
+
+        goHome.addActionListener(e -> {
+            gameFen.dispose();
+            new Accueil();
+        });
+        quit.addActionListener(e -> System.exit(0));
+
+        JPanel botPanel = new JPanel(new FlowLayout());
+
+        botPanel.add(goHome);
+        botPanel.add(quit);
 
         // Ajout d'une étiquette de titre
         JLabel étiquetteTitre = new JLabel("Résultats Finaux");
@@ -39,12 +56,12 @@ public class ResultFrame extends JDialog {
         for (int i = 0; i < joueurs.size(); i++) {
             Player joueur = joueursTriés.get(i);
 
-            if(i != 0 && joueursTriés.get(i).getMalus()> joueursTriés.get(i-1).getMalus() ){
+            if (i != 0 && joueursTriés.get(i).getMalus() > joueursTriés.get(i - 1).getMalus()) {
                 rank++;
                 System.out.println();
             }
 
-            String texteRésultat = String.format("%der : Joueur %d - %d points", rank, joueurs.indexOf(joueur) ,
+            String texteRésultat = String.format("%der : Joueur %d - %d points", rank, joueurs.indexOf(joueur) + 1,
                     joueur.getMalus());
             JLabel étiquetteRésultat = new JLabel(texteRésultat);
             étiquetteRésultat.setHorizontalAlignment(SwingConstants.CENTER);
@@ -62,7 +79,8 @@ public class ResultFrame extends JDialog {
         }
 
         // Ajout du panneau principal à la boîte de dialogue
-        add(panneauPrincipal);
+        add(panneauPrincipal, BorderLayout.CENTER);
+        add(botPanel, BorderLayout.SOUTH);
 
         // Configuration de la taille et de la visibilité
         pack();

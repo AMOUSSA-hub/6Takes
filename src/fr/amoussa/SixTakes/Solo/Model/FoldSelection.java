@@ -4,6 +4,9 @@ import java.util.*;
 import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
 import fr.amoussa.SixTakes.Solo.View.Card;
 
+/**
+ * Tâche de sélection du pli à prendre (limite de temps).
+ */
 public class FoldSelection extends TimerTask {
 
   public Card c;
@@ -20,7 +23,7 @@ public class FoldSelection extends TimerTask {
   @Override
   public void run() {
 
-    // if (!Game.isPaused()) {
+    // if (!g.isPaused()) {
     this.g.getView().renderChrono("<html>Choisissez une pile <br>" + this.time + "</html>");
     if (this.time == 0) {
       this.g.getView().renderChrono("");

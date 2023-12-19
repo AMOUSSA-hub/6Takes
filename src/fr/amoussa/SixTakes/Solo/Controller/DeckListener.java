@@ -8,7 +8,9 @@ import javax.swing.text.PlainDocument;
 
 import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Solo.View.*;
-
+/**
+ * Listener gérant le choix de la carte sélectionnée pour le joueur local.
+ */
 public class DeckListener implements MouseListener {
 
     private Card ca;

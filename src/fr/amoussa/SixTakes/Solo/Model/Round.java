@@ -4,6 +4,9 @@ import java.util.*;
 import fr.amoussa.SixTakes.Solo.Controller.FoldListener;
 import fr.amoussa.SixTakes.Solo.View.Card;
 
+/**
+ * Tâche de sélection de la carte à jouer (limité dans le temps)
+ */
 public class Round extends TimerTask {
 
   public Card c;
@@ -20,7 +23,7 @@ public class Round extends TimerTask {
   @Override
   public void run() {
 
-    if (!Game.isPaused()) {
+    if (!g.getView().isPaused()) {
       this.g.getView().renderChrono("Il vous reste " + this.time + " secondes pour jouer");
       if (this.time == 0) {
         this.g.getView().renderChrono("");

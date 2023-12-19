@@ -4,7 +4,9 @@ import java.awt.event.*;
 import java.util.*;
 
 import fr.amoussa.SixTakes.Solo.View.*;
-
+/**
+ * Listener gérant la sélection des 4 piles.
+ */
 public class FoldListener implements MouseListener{
    
     private static boolean selectable = false;

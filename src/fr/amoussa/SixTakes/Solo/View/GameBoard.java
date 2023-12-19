@@ -10,6 +10,7 @@ import fr.amoussa.SixTakes.Solo.Model.Game;
 import fr.amoussa.SixTakes.Solo.Model.Player;
 import fr.amoussa.SixTakes.Solo.Model.Round;
 import fr.amoussa.SixTakes.Utils.Icone;
+
 /**
  * Panneau représentant l'ensemble du plateau de jeu
  */
@@ -23,9 +24,11 @@ public class GameBoard extends JPanel {
   private MyJLabel[] printScorePlayer;
   private JPanel localPlayerPanPlays;
   private List<Fold> allFolds;
+  private boolean isPaused;
 
   public GameBoard(int nbr_player) {
 
+    isPaused = false;
     // initialisation du panneau de jeu principal (qui contient tout)
     GridBagConstraints gbc = new GridBagConstraints();
     setLayout(new GridBagLayout());
@@ -47,12 +50,11 @@ public class GameBoard extends JPanel {
     this.localPlayerPanPlays = new JPanel(new GridLayout(2, 1));
     this.selectedCardPan = new JPanel(new GridLayout(nbr_player, 1, 10, 10));
 
-    JButton quit = new JButton("Quitter la partie");
     JButton pause = new JButton("Pause");
-    quit.addActionListener(e -> System.exit(0));
+
     pause.addActionListener(e -> {
-      Game.setPaused(true);
-      new PauseFen((JFrame) this.getTopLevelAncestor());
+      this.setPaused(true);
+      new PauseFen((JFrame) this.getTopLevelAncestor(), this);
     });
 
     this.chrono = new MyJLabel();
@@ -156,33 +158,19 @@ public class GameBoard extends JPanel {
     gbc.anchor = GridBagConstraints.CENTER;
     gbc.weightx = 1.0;
     gbc.weighty = 1.0;
-    gbc.insets = new Insets(1, 1, 1, 1);
+    gbc.insets = new Insets(1, 1, 10, 1);
     add(localPlayerPan, gbc);
 
     gbc.gridx = 2;
     gbc.gridy = 3;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
-    gbc.fill = GridBagConstraints.BOTH;
-    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.fill = GridBagConstraints.NONE;
+    gbc.anchor = GridBagConstraints.LAST_LINE_END;
     gbc.weightx = 1.0;
     gbc.weighty = 1.0;
-    gbc.insets = new Insets(1, 1, 1, 1);
-
+    gbc.insets = new Insets(1, 1, 10, 10);
     add(pause, gbc);
-
-    // Mise en place du bouton quitter
-    gbc.gridx = 2;
-    gbc.gridy = 4;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 1;
-    gbc.fill = GridBagConstraints.BOTH;
-    gbc.anchor = GridBagConstraints.CENTER;
-    gbc.weightx = 1.0;
-    gbc.weighty = 1.0;
-    gbc.insets = new Insets(1, 1, 1, 1);
-
-    add(quit, gbc);
 
   }
 
@@ -257,8 +245,31 @@ public class GameBoard extends JPanel {
     }
   }
 
+  /**
+   * getter des 4 piles
+   * 
+   * @return
+   */
   public List<Fold> getAllFolds() {
     return this.allFolds;
+  }
+
+  /**
+   * Mettre en pause la partie.
+   * 
+   * @param b
+   */
+  public void setPaused(boolean b) {
+    isPaused = b;
+  }
+
+  /**
+   * Indique si la partie est en pause.
+   * 
+   * @return
+   */
+  public boolean isPaused() {
+    return isPaused;
   }
 
 }
