@@ -125,7 +125,7 @@ public class Game extends Timer {
    * Commencer un tour.
    */
   public void startRound() {
-    schedule(new Round(5, this), 1000, 1000);
+    schedule(new Round(10, this), 1000, 1000);
   }
 
   /**

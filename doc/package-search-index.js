@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.amoussa.SixTakes"},{"l":"fr.amoussa.SixTakes.Multijoueur.View"},{"l":"fr.amoussa.SixTakes.Solo.Controller"},{"l":"fr.amoussa.SixTakes.Solo.Model"},{"l":"fr.amoussa.SixTakes.Solo.View"},{"l":"fr.amoussa.SixTakes.Utils"}];updateSearchResults();
