@@ -2,4 +2,4 @@
 
 Application permettant de jouer au jeu du **6 qui prend**, seul ou en multijoueur. 
 Collaborateur: Rayan AMOUSSA et Adrien Dos Santos.  
-lien de la documentation: http://dwarves.iut-fbleau.fr/~amoussa/6Takes/doc/
+lien de la documentation: https://dwarves.iut-fbleau.fr/~amoussa/6Takes/doc/
