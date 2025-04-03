@@ -8,8 +8,8 @@ import java.awt.*;
  */
 public class FormNumberPlayer extends JDialog {
 
-    private static final int DEFAULT_WIDTH = 200;
-    private static final int DEFAULT_HEIGHT = 200;
+    private static final int DEFAULT_WIDTH = 300;
+    private static final int DEFAULT_HEIGHT = 220;
 
     public FormNumberPlayer() {
         setLayout(new GridLayout(3, 1));
@@ -20,7 +20,7 @@ public class FormNumberPlayer extends JDialog {
 
         JPanel midPanel = new JPanel(new FlowLayout());
 
-        add(new JLabel("<html>Sélectionner le nombre de joueurs<br>(de 2 à 10 joueurs)</html>"));
+        add(new JLabel(" Sélectionner le nombre de joueurs (de 2 à 10 joueurs) "));
         add(midPanel);
         midPanel.add(nbrPlayerSpinner);
         midPanel.add(confirmButton);

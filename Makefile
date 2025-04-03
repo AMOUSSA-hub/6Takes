@@ -61,8 +61,12 @@ ${BUILD}/App.class:  ${SRC}/App.java \
 
 # CLASSES VIEW#
 
+${BUILD}/Solo/View/HomeButton.class: ${SRC}/Solo/View/HomeButton.java
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/HomeButton.java
+
 ${BUILD}/Solo/View/Acceuil.class:  ${SRC}/Solo/View/Accueil.java \
-	${BUILD}/Solo/Controller/AcceuilListener.class
+	${BUILD}/Solo/Controller/AcceuilListener.class \
+	${BUILD}/Solo/View/HomeButton.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Accueil.java
 
 ${BUILD}/Solo/View/GameFen.class:  ${SRC}/Solo/View/GameFen.java \
@@ -71,7 +75,7 @@ ${BUILD}/Solo/View/GameFen.class:  ${SRC}/Solo/View/GameFen.java \
 	${BUILD}/Solo/Model/Game.class
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/GameFen.java
 
-${BUILD}/Solo/View/FormNumberPlayer.class: ${SRC}/Solo/View/FormNumberPlayer.java 
+${BUILD}/Solo/View/FormNumberPlayer.class: ${SRC}/Solo/View/FormNumberPlayer.java
 	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/FormNumberPlayer.java
 
 ${BUILD}/Solo/View/GameBoard.class: ${SRC}/Solo/View/GameBoard.java \
@@ -84,7 +88,7 @@ ${BUILD}/Solo/View/GameBoard.class: ${SRC}/Solo/View/GameBoard.java \
 
 ${BUILD}/Solo/View/Card.class: ${SRC}/Solo/View/Card.java \
 	${BUILD}/Utils/Icone.class
-	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Card.java	
+	${JAVAC} ${JAVAC_OPTIONS} ${SRC}/Solo/View/Card.java
 
 
 ${BUILD}/Solo/View/Fold.class:  ${SRC}/Solo/View/Fold.java \

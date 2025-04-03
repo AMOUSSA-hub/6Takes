@@ -1,6 +1,7 @@
 package fr.amoussa.SixTakes.Solo.View;
 
 import fr.amoussa.SixTakes.Solo.Controller.*;
+import fr.amoussa.SixTakes.Solo.View.HomeButton;
 
 import javax.swing.*;
 
@@ -26,9 +27,9 @@ public class Accueil extends JFrame {
         JLabel imageLabel = new JLabel(new ImageIcon(Icone.home_Image));
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton solo = new JButton("Partie Solo");
+        HomeButton solo = new HomeButton("Partie Solo");
         solo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JButton multi = new JButton("Multijoueur");
+        HomeButton multi = new HomeButton("Multijoueur");
         multi.setAlignmentX(Component.CENTER_ALIGNMENT);
         centerPanel.add(imageLabel);
         centerPanel.add(Box.createVerticalStrut(10)); // Espace vertical entre l'image et les boutons
